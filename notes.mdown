@@ -1,0 +1,32 @@
+# Scope Set of rules for storing and finding variables.
+
+# Compiler Theory
+
+## Tokenizing/Lexing Breaking up a string of characters into meningfull (to the
+language) chunks, called tokens.
+
+## Parsing Taking a stream (array) of tokens and turning it into a tree of
+nested elements, wich collectively represent the grammatical structure of the
+program (Abstract Syntax Tree 'AST').
+
+## Code generation The process of taking an AST and turning it into executable
+code.
+
+## Summary First Compiler declares a variable (if not previously declared) in
+the current Scope, and second, when executing, Engine looks up the variable in
+Sccope and assigns to it, if found.
+
+# LHS vs RHS
+
+## LHS Assign a value. Find a variable container and try to assign some value to
+it.
+
+## RHS Look up/execute of the value of some variable. "Retrieve his/her source
+value" or "go get the value of...".
+
+# Look ups / Shadowing Scope look-up stops once it finds the first match. The
+same identifier name can be specified at multiple layers of nested scope, which
+is called 'shadowing' (the ineer identifier 'shadows' the outer identifier).
+Regardless of 'shadowing', scope look-up always starts at the innermost scope
+being executed at the time, and woks its way outward/upward until the first
+match, and stops.
