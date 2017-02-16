@@ -1,1 +1,0 @@
-var Module=function(){var o=function(o){console.log(o)},l=function(l){o(l)},n=function(l){o(l)};return{publicMethod:l,publicMethodTwo:n}}();console.log(Module.publicMethod("Hello"));var Module=function(){var o=function(o){console.log(o)},l=function(l){o(l)},n=function(l){o(l)};return{publicMethod:l,publicMethodTwo:n}}();console.log(Module.publicMethod("Hello"));
