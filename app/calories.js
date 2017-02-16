@@ -2,12 +2,14 @@ var calories = (function () {
 
     // locally scoped Object
     var defaults = {
+        form: document.querySelector( 'form[name=calories]' ),
+        weight: document.querySelector( 'input[name=weight]' ),
+        // parseInt( defaults.weight.value )
+        length: document.querySelector( 'input[name=length]' ),
+        age: document.querySelector( 'input[name=age]' ),
 
-        weight: 73,
-        length: 189,
-        age: 26,
-        gender: 'male', // or female
-        training: 'muscle', // or muscle
+        gender: _getRadioVal( 'calories', 'gender' ),
+        // training: _getRadioVal( 'calories', 'training' ),
 
         pal: {
             low: 1.2,
@@ -24,6 +26,22 @@ var calories = (function () {
         },
 
         fiber: 0.014
+
+    };
+
+    var _getRadioVal = function ( formName, radioName ) {
+
+        var form = document.getElementById( formName );
+        var radios = document.getElementsByName( radioName );
+
+        for ( i = 0, length = radios.length; i < length; i++ ) {
+
+            if (radios[i].checked) {
+                return radios[i].value;
+                break;
+            }
+
+        }
 
     };
 
@@ -135,15 +153,28 @@ var calories = (function () {
         };
     }
 
+    var _formSubmit = function () {
+
+      var onSubmit = function( event ) {
+
+        event.preventDefault();
+
+        console.log(defaults.gender);
+
+      };
+
+      defaults.form.addEventListener( 'submit', onSubmit, false );
+
+
+    };
+
+
     var init = function () {
 
         // public
-        console.log( 'Init module' );
-        console.log( _macros() );
-        console.log('testttsasa');
+        console.log( 'Init calories module' );
 
-        _training();
-        _macros();
+        _formSubmit();
 
     };
 
@@ -151,11 +182,8 @@ var calories = (function () {
 
         init: init
 
-
     };
 
 })();
-
-
 
 export default calories;

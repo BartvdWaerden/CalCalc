@@ -5,27 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Webpack 2 demo</title>
-    <script src="dist/bundle.js"></script>
 </head>
 
 <body>
 
-<h1>Webpack Demosss</h1>
+<h1>Webpack Demo</h1>
 
-    <form name="calories">
+    <form name="calories" id="calories">
 
         <label>Weight:</label>
-        <input type="number">
+        <input type="number" name="weight" placeholder="weight"/>
 
         <label>Length:</label>
-        <input type="number">
+        <input type="number" name="length" placeholder="length"/>
 
         <label>Age:</label>
-        <input type="number" class="age">
+        <input type="number" name="age" placeholder="age"/>
 
         <label>Gender:</label>
         <input type="radio" name="gender" value="male">Male
         <input type="radio" name="gender" value="female">Female
+
+        <input type="radio" name="training" value="fat"> Fat
+        <input type="radio" name="training" value="muscle"> Muscle
 
         <label>PAL:</label>
         <input type="radio" name="pal" value="1.2">1.2
@@ -33,9 +35,11 @@
         <input type="radio" name="pal" value="1.4">1.4
         <input type="radio" name="pal" value="1.6">1.5
 
-        <button type="submit" id="button">Calculate</button>
+        <button type="submit">Calculate</button>
 
     </form>
+
+    <script src="dist/bundle.js"></script>
 
 </body>
 
