@@ -1,14 +1,16 @@
 var calories = (function () {
 
+    var weight, length, age, gender, training;
+
     // locally scoped Object
     var defaults = {
         form: document.querySelector( 'form[name=calories]' ),
-        weight: document.querySelector( 'input[name=weight]' ),
+        // weight: document.querySelector( 'input[name=weight]' ),
         // parseInt( defaults.weight.value )
-        length: document.querySelector( 'input[name=length]' ),
-        age: document.querySelector( 'input[name=age]' ),
+        // length: document.querySelector( 'input[name=length]' ),
+        // age: document.querySelector( 'input[name=age]' ),
 
-        gender: _getRadioVal( 'calories', 'gender' ),
+        // gender: _getRadioVal( 'calories', 'gender' ),
         // training: _getRadioVal( 'calories', 'training' ),
 
         pal: {
@@ -33,7 +35,7 @@ var calories = (function () {
 
         var form = document.getElementById( formName );
         var radios = document.getElementsByName( radioName );
-
+        var i;
         for ( i = 0, length = radios.length; i < length; i++ ) {
 
             if (radios[i].checked) {
@@ -159,7 +161,8 @@ var calories = (function () {
 
         event.preventDefault();
 
-        console.log(defaults.gender);
+        gender = _getRadioVal('calories', 'gender');
+        console.log(gender);
 
       };
 
