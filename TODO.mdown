@@ -1,0 +1,7 @@
+# TODO
+
+* Fill in docblocks calories.js
+* Create seperate module for get radio values and extend in calories.js
+* Webpack watch + automatic reload
+* Add Spijker-Hoven method
+* Output returned value is html

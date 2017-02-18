@@ -1,24 +1,24 @@
 var calories = (function () {
 
-    var weight, length, age, gender, training;
+    /**
+     *
+     */
 
-    // locally scoped Object
-    var defaults = {
+    let weight,
+        length,
+        age,
+        gender,
+        training,
+        pal;
+
+
+    /**
+     * [defaults description]
+     * @type {Object}
+     */
+
+    const defaults = {
         form: document.querySelector( 'form[name=calories]' ),
-        // weight: document.querySelector( 'input[name=weight]' ),
-        // parseInt( defaults.weight.value )
-        // length: document.querySelector( 'input[name=length]' ),
-        // age: document.querySelector( 'input[name=age]' ),
-
-        // gender: _getRadioVal( 'calories', 'gender' ),
-        // training: _getRadioVal( 'calories', 'training' ),
-
-        pal: {
-            low: 1.2,
-            medium: 1.3, // 1.3 - 1.4
-            high: 1.4, // 1.4 - 1.6
-            veryHigh: 1.6 // 1.6 - 1.8
-        },
 
         calsPerGram: {
             fat: 9,
@@ -31,12 +31,23 @@ var calories = (function () {
 
     };
 
-    var _getRadioVal = function ( formName, radioName ) {
 
-        var form = document.getElementById( formName );
-        var radios = document.getElementsByName( radioName );
-        var i;
-        for ( i = 0, length = radios.length; i < length; i++ ) {
+    /**
+     * [_getRadioVal description]
+     * @param  {[type]} formName  [description]
+     * @param  {[type]} radioName [description]
+     * @return {[type]}           [description]
+     */
+
+    let _getRadioVal = function ( formName, radioName ) {
+
+        let form = document.getElementById( formName );
+        let radios = document.getElementsByName( radioName );
+
+        let i;
+        let amount;
+
+        for ( i = 0, amount = radios.length; i < amount; i++ ) {
 
             if (radios[i].checked) {
                 return radios[i].value;
@@ -47,34 +58,63 @@ var calories = (function () {
 
     };
 
-    var _harrisBenedict = function () {
 
-        if ( defaults.gender === 'male' ) {
+    /**
+     * [_harrisBenedict description]
+     * @return {[type]} [description]
+     */
 
-            let value = 88.362 + ( 13.397 * defaults.weight ) + ( 4.799 * defaults.length) - ( 5.677 * defaults.age );
+    let _harrisBenedict = function () {
+
+        weight = parseInt( document.querySelector( 'input[name=weight]' ).value ); // Make global?
+        length = parseInt( document.querySelector( 'input[name=length]' ).value ); // Make global?
+        age = parseInt( document.querySelector( 'input[name=age]' ).value ); // Make global?
+
+        gender = _getRadioVal('calories', 'gender');
+
+        if ( gender === 'male' ) {
+
+            let value = 88.362 + ( 13.397 * weight ) + ( 4.799 * length) - ( 5.677 * age );
 
             return value;
 
-        } else if ( defaults.gender === 'female' ) {
+        } else if ( gender === 'female' ) {
 
-            let value = 447.593 + ( 9.247 * defaults.weight ) + ( 3.098 * defaults.length) - ( 4.33 * defaults.age );
+            let value = 447.593 + ( 9.247 * weight ) + ( 3.098 * length) - ( 4.33 * age );
 
             return value;
         }
     }
 
-    var _restingMetabolicRate = function () {
 
-        let value = _harrisBenedict() * defaults.pal.medium;
+    /**
+     * [_restingMetabolicRate description]
+     * @return {[type]} [description]
+     */
+
+    let _restingMetabolicRate = function () {
+
+        pal = _getRadioVal('calories', 'pal'); // Make global?
+
+        let value = _harrisBenedict() * pal;
         return value;
 
     }
 
-    var _training = function () {
 
-        if ( defaults.training === 'fat' ) {
+    /**
+     * [_training description]
+     * @return {[type]} [description]
+     */
 
-            if ( defaults.gender === 'male' ) {
+    let _training = function () {
+
+        training = _getRadioVal('calories', 'training'); // Make global?
+        gender = _getRadioVal('calories', 'gender'); // Make global?
+
+        if ( training === 'fat' ) {
+
+            if ( gender === 'male' ) {
 
                 let training = _restingMetabolicRate() - ( _restingMetabolicRate() * .18 );
                 let rest = _restingMetabolicRate() - ( _restingMetabolicRate() * .22 );
@@ -85,7 +125,7 @@ var calories = (function () {
                 };
 
 
-            } else if ( defaults.gender === 'female' ) {
+            } else if ( gender === 'female' ) {
 
                 let training = _restingMetabolicRate() - ( _restingMetabolicRate() * .18 );
                 let rest = _restingMetabolicRate() - ( _restingMetabolicRate() * .22 );
@@ -97,9 +137,9 @@ var calories = (function () {
 
             }
 
-        } else if ( defaults.training === 'muscle' ) {
+        } else if ( training === 'muscle' ) {
 
-            if ( defaults.gender === 'male' ) {
+            if ( gender === 'male' ) {
 
                 let training  = _restingMetabolicRate() * 1.2;
                 let rest  = _restingMetabolicRate() * 1.1;
@@ -109,7 +149,7 @@ var calories = (function () {
                     rest: rest
                 };
 
-            } else if ( defaults.gender === 'female' ) {
+            } else if ( gender === 'female' ) {
 
                 let training  = _restingMetabolicRate() * 1.1;
                 let rest  = _restingMetabolicRate() * 1.05;
@@ -125,7 +165,13 @@ var calories = (function () {
 
     }
 
-    var _macros = function () {
+
+    /**
+     * [_macros description]
+     * @return {[type]} [description]
+     */
+
+    let _macros = function () {
 
         let calories = _training();
         let caloriesTraining = calories.training;
@@ -135,11 +181,14 @@ var calories = (function () {
             training: ( caloriesTraining * .3 ) / defaults.calsPerGram.fat,
             rest: ( caloriesRest * .3 ) / defaults.calsPerGram.fat
         };
-        let protein = defaults.weight * 2.2;
+
+        let protein = weight * 2.2;
+
         let carbs = {
             training: ( caloriesTraining - ( ( fat.training * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs,
             rest: ( caloriesRest - ( ( fat.rest * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs
         };
+
         let fibre = {
             training: caloriesTraining * defaults.fiber,
             rest: caloriesRest * defaults.fiber
@@ -155,14 +204,19 @@ var calories = (function () {
         };
     }
 
-    var _formSubmit = function () {
 
-      var onSubmit = function( event ) {
+    /**
+     * [_formSubmit description]
+     * @return {[type]} [description]
+     */
+
+    let _formSubmit = function () {
+
+      let onSubmit = function( event ) {
 
         event.preventDefault();
 
-        gender = _getRadioVal('calories', 'gender');
-        console.log(gender);
+        console.log( _macros() );
 
       };
 
@@ -172,7 +226,12 @@ var calories = (function () {
     };
 
 
-    var init = function () {
+    /**
+     * [init description]
+     * @return {[type]} [description]
+     */
+
+    let init = function () {
 
         // public
         console.log( 'Init calories module' );

@@ -8,11 +8,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
 
-    devServer: {
-        port: 8080
-    },
-
     watch: true,
+
     module: {
         loaders: [
             {
