@@ -8,6 +8,3 @@ calories.init();
 
 
 
-
-
-

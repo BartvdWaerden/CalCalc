@@ -1,4 +1,8 @@
-var calories = (function () {
+import getRadio from './getRadio.js'
+
+
+
+let calories = (function () {
 
     /**
      *
@@ -33,44 +37,17 @@ var calories = (function () {
 
 
     /**
-     * [_getRadioVal description]
-     * @param  {[type]} formName  [description]
-     * @param  {[type]} radioName [description]
-     * @return {[type]}           [description]
-     */
-
-    let _getRadioVal = function ( formName, radioName ) {
-
-        let form = document.getElementById( formName );
-        let radios = document.getElementsByName( radioName );
-
-        let i;
-        let amount;
-
-        for ( i = 0, amount = radios.length; i < amount; i++ ) {
-
-            if (radios[i].checked) {
-                return radios[i].value;
-                break;
-            }
-
-        }
-
-    };
-
-
-    /**
      * [_harrisBenedict description]
      * @return {[type]} [description]
      */
 
     let _harrisBenedict = function () {
 
-        weight = parseInt( document.querySelector( 'input[name=weight]' ).value ); // Make global?
-        length = parseInt( document.querySelector( 'input[name=length]' ).value ); // Make global?
+        weight = parseFloat( document.querySelector( 'input[name=weight]' ).value ); // Make global?
+        length = parseFloat( document.querySelector( 'input[name=length]' ).value ); // Make global?
         age = parseInt( document.querySelector( 'input[name=age]' ).value ); // Make global?
 
-        gender = _getRadioVal('calories', 'gender');
+        gender = getRadio.init( 'calories', 'gender' );
 
         if ( gender === 'male' ) {
 
@@ -94,7 +71,7 @@ var calories = (function () {
 
     let _restingMetabolicRate = function () {
 
-        pal = _getRadioVal('calories', 'pal'); // Make global?
+        pal = getRadio.init( 'calories', 'pal' ); // Make global?
 
         let value = _harrisBenedict() * pal;
         return value;
@@ -109,8 +86,8 @@ var calories = (function () {
 
     let _training = function () {
 
-        training = _getRadioVal('calories', 'training'); // Make global?
-        gender = _getRadioVal('calories', 'gender'); // Make global?
+        training = getRadio.init( 'calories', 'training' ); // Make global?
+        gender = getRadio.init( 'calories', 'gender' ); // Make global?
 
         if ( training === 'fat' ) {
 
