@@ -4,7 +4,8 @@ import getRadio from './getRadio.js'
 let calories = (function () {
 
     /**
-     *
+     * Set variables which are available within the entire 'scope' of the
+     * module.
      */
 
     let weight,
@@ -16,23 +17,31 @@ let calories = (function () {
 
 
     /**
-     * [defaults description]
+     * Set default settings
+     *
      * @type {Object}
      */
 
     const defaults = {
 
+        // Form name attribute.
         form: document.querySelector( 'form[name=calories]' ),
 
+        // Amount of calories per type of macro.
         calsPerGram: {
             fat: 9,
             protein: 4,
             carbs: 4,
         },
 
+        // Value for calculating fiber intake (14-16 gram per 1000kcal).
         fiber: 0.014,
 
+        // Classes and attributes available in the form.
         classes: {
+            weight: 'input[name=weight]',
+            length: 'input[name=length]',
+            age: 'input[name=age]',
             training: '.training',
             rest: '.rest',
             fat: '.fat',
@@ -45,15 +54,17 @@ let calories = (function () {
 
 
     /**
-     * [_harrisBenedict description]
-     * @return {[type]} [description]
+     * Calculate resting metabolic rate (BMR) with the Harris & Benedict
+     * formula.
+     *
+     * @return {number} BMR in calories needed per day for a male or female.
      */
 
     let _harrisBenedict = function () {
 
-        weight = parseFloat( document.querySelector( 'input[name=weight]' ).value ); // Make global?
-        length = parseFloat( document.querySelector( 'input[name=length]' ).value ); // Make global?
-        age = parseInt( document.querySelector( 'input[name=age]' ).value ); // Make global?
+        weight = parseFloat( document.querySelector( defaults.classes.weight ).value );
+        length = parseFloat( document.querySelector( defaults.classes.length ).value );
+        age = parseInt( document.querySelector( defaults.classes.age ).value );
 
         gender = getRadio.value( 'calories', 'gender' );
 
@@ -73,13 +84,15 @@ let calories = (function () {
 
 
     /**
-     * [_restingMetabolicRate description]
-     * @return {[type]} [description]
+     * Calculate total amount of calories per day based on BMR including
+     * daily activity (PAL-values).
+     *
+     * @return {number} amount of calories needed including daily activities.
      */
 
-    let _restingMetabolicRate = function () {
+    let _bmrPlusPal = function () {
 
-        pal = getRadio.value( 'calories', 'pal' ); // Make global?
+        pal = getRadio.value( 'calories', 'pal' );
 
         let value = _harrisBenedict() * pal;
         return value;
@@ -88,21 +101,24 @@ let calories = (function () {
 
 
     /**
-     * [_training description]
-     * @return {[type]} [description]
+     * Calculate amount of calories needed on a rest and training day based on
+     * type of training (burning 'fat' or building 'muscle').
+     *
+     * @return {object} amount of calories needed on a 'training' and 'rest'
+     * day.
      */
 
     let _training = function () {
 
-        training = getRadio.value( 'calories', 'training' ); // Make global?
-        gender = getRadio.value( 'calories', 'gender' ); // Make global?
+        training = getRadio.value( 'calories', 'training' );
+        gender = getRadio.value( 'calories', 'gender' );
 
         if ( training === 'fat' ) {
 
             if ( gender === 'male' ) {
 
-                let training = _restingMetabolicRate() - ( _restingMetabolicRate() * .18 );
-                let rest = _restingMetabolicRate() - ( _restingMetabolicRate() * .22 );
+                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 );
+                let rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
 
                 return {
                     training: training,
@@ -112,8 +128,8 @@ let calories = (function () {
 
             } else if ( gender === 'female' ) {
 
-                let training = _restingMetabolicRate() - ( _restingMetabolicRate() * .18 );
-                let rest = _restingMetabolicRate() - ( _restingMetabolicRate() * .22 );
+                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 );
+                let rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
 
                 return {
                     training: training,
@@ -126,8 +142,8 @@ let calories = (function () {
 
             if ( gender === 'male' ) {
 
-                let training  = _restingMetabolicRate() * 1.2;
-                let rest  = _restingMetabolicRate() * 1.1;
+                let training  = _bmrPlusPal() * 1.2;
+                let rest  = _bmrPlusPal() * 1.1;
 
                 return {
                     training: training,
@@ -136,8 +152,8 @@ let calories = (function () {
 
             } else if ( gender === 'female' ) {
 
-                let training  = _restingMetabolicRate() * 1.1;
-                let rest  = _restingMetabolicRate() * 1.05;
+                let training  = _bmrPlusPal() * 1.1;
+                let rest  = _bmrPlusPal() * 1.05;
 
                 return {
                     training: training,
@@ -152,32 +168,36 @@ let calories = (function () {
 
 
     /**
-     * [_macros description]
-     * @return {[type]} [description]
+     * Calculate grams needed on a 'training' and 'rest' day per macro (fat,
+     * protein, carbs, fiber) based on total amount of calories calculated in
+     * the '_training" method.
+     *
+     * @return {object} amount of grams needed per macro on a 'training' and
+     * 'rest' day.
      */
 
     let _macros = function () {
 
-        let calories = _training();
-        let caloriesTraining = calories.training;
-        let caloriesRest = calories.rest;
+        let calories = _training(),
+            caloriesTraining = Math.round( calories.training ),
+            caloriesRest = Math.round( calories.rest ),
 
-        let fat = {
-            training: ( caloriesTraining * .3 ) / defaults.calsPerGram.fat,
-            rest: ( caloriesRest * .3 ) / defaults.calsPerGram.fat
-        };
+            fat = {
+                training: Math.round( ( caloriesTraining * .3 ) / defaults.calsPerGram.fat ),
+                rest: Math.round( ( caloriesRest * .3 ) / defaults.calsPerGram.fat )
+            },
 
-        let protein = weight * 2.2;
+            protein = Math.round( weight * 2.2 ),
 
-        let carbs = {
-            training: ( caloriesTraining - ( ( fat.training * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs,
-            rest: ( caloriesRest - ( ( fat.rest * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs
-        };
+            carbs = {
+                training: Math.round( ( caloriesTraining - ( ( fat.training * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs ),
+                rest: Math.round( ( caloriesRest - ( ( fat.rest * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs )
+            },
 
-        let fibre = {
-            training: caloriesTraining * defaults.fiber,
-            rest: caloriesRest * defaults.fiber
-        };
+            fiber = {
+                training: Math.round( caloriesTraining * defaults.fiber ),
+                rest: Math.round( caloriesRest * defaults.fiber )
+            };
 
         return {
             caloriesTraining: caloriesTraining,
@@ -185,14 +205,13 @@ let calories = (function () {
             carbs: carbs,
             protein: protein,
             fat: fat,
-            fibre: fibre
+            fiber: fiber
         };
     }
 
 
     /**
-     * [_appendData description]
-     * @return {[type]} [description]
+     * Bind results calculated in '_macros' to DOM elements
      */
 
     let _appendData = function ( event ) {
@@ -208,20 +227,19 @@ let calories = (function () {
             fiber = document.querySelector( defaults.classes.fiber );
 
 
-        // bind results to DOM
+        // Bind results to DOM
         caloriesTraining.innerHTML =  macros.caloriesTraining;
         caloriesRest.innerHTML =  macros.caloriesRest;
         carbs.innerHTML =  'training: ' + macros.carbs.training + ' rest: ' + macros.carbs.rest;
         protein.innerHTML =  macros.protein;
         fat.innerHTML = 'training: ' + macros.fat.training + ' rest: ' + macros.fat.rest;
-        fiber.innerHTML =  'training: ' + macros.fibre.training + 'rest: ' + macros.fibre.rest;
+        fiber.innerHTML =  'training: ' + macros.fiber.training + ' rest: ' + macros.fiber.rest;
 
     };
 
 
     /**
-     * [_bindEvents description]
-     * @return {[type]} [description]
+     * Bind events
      */
 
     let _bindEvents = function () {
@@ -232,16 +250,18 @@ let calories = (function () {
 
 
     /**
-     * [init description]
-     * @return {[type]} [description]
+     * Init the module
      */
 
     let init = function () {
 
-        // public
         _bindEvents();
 
     };
+
+    /**
+     * Return an object exposed to the public
+     */
 
     return {
 

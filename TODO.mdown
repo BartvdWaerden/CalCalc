@@ -1,6 +1,5 @@
 # TODO
 
-* Fill in docblocks calories.js
 * Webpack watch + automatic reload
 * Add Spijker-Hoven method
 * Add inches and lbs calculation option
