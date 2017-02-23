@@ -4,7 +4,7 @@
 A calorie calculator which calculates your daily amount of calories and corresponding macros based on your gender and goals.
 
 
-Bart van der Waerden – [@BartvdWaerden](https://twitter.com/BartvdWaerden) – YourEmail@example.com
+Bart van der Waerden – [@BartvdWaerden](https://twitter.com/BartvdWaerden)
 Distributed under the [MIT license](LICENSE.md).
 © [Bart van der Waerden](https://bartvanderwaerden.com/)
 [https://github.com/BartvdWaerden/](https://github.com/BartvdWaerden/)
