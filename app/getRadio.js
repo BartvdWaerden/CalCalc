@@ -1,6 +1,5 @@
 let getRadio = (function () {
 
-
     /**
      * [_getRadioVal description]
      * @param  {[type]} formName  [description]
@@ -8,13 +7,12 @@ let getRadio = (function () {
      * @return {[type]}           [description]
      */
 
-    let _getRadioVal = function ( formName, radioName ) {
+    let getRadioVal = function ( formName, radioName ) {
 
-        let form = document.getElementById( formName );
-        let radios = document.getElementsByName( radioName );
-
-        let i;
-        let amount;
+        let form = document.getElementById( formName ),
+            radios = document.getElementsByName( radioName ),
+            i,
+            amount;
 
         for ( i = 0, amount = radios.length; i < amount; i++ ) {
 
@@ -25,26 +23,11 @@ let getRadio = (function () {
 
         }
 
-
-    };
-
-    /**
-     * [init description]
-     * @return {[type]} [description]
-     */
-
-    let init = function ( formName, radioName) {
-
-        // public
-        // console.log( 'Init radios module' );
-
-        _getRadioVal( formName, radioName);
-
     };
 
     return {
 
-        init: _getRadioVal
+        value: getRadioVal
 
     };
 

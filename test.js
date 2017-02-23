@@ -1,7 +1,14 @@
 import getRadio from './getRadio.js'
 
 
-let calories = (function () {
+
+let calories = (function ( getRadio ) {
+
+    getRadio.extension = function () {
+        // another method
+    };
+
+    return getRadio;
 
     /**
      *
@@ -21,25 +28,16 @@ let calories = (function () {
      */
 
     const defaults = {
-
         form: document.querySelector( 'form[name=calories]' ),
 
         calsPerGram: {
             fat: 9,
             protein: 4,
             carbs: 4,
+            alcohol: 7
         },
 
-        fiber: 0.014,
-
-        classes: {
-            training: '.training',
-            rest: '.rest',
-            fat: '.fat',
-            protein: '.protein',
-            carbs: '.carbs',
-            fiber: '.fiber'
-        }
+        fiber: 0.014
 
     };
 
@@ -55,7 +53,7 @@ let calories = (function () {
         length = parseFloat( document.querySelector( 'input[name=length]' ).value ); // Make global?
         age = parseInt( document.querySelector( 'input[name=age]' ).value ); // Make global?
 
-        gender = getRadio.value( 'calories', 'gender' );
+        gender = getRadio.init( 'calories', 'gender' );
 
         if ( gender === 'male' ) {
 
@@ -79,7 +77,7 @@ let calories = (function () {
 
     let _restingMetabolicRate = function () {
 
-        pal = getRadio.value( 'calories', 'pal' ); // Make global?
+        pal = getRadio.init( 'calories', 'pal' ); // Make global?
 
         let value = _harrisBenedict() * pal;
         return value;
@@ -94,8 +92,8 @@ let calories = (function () {
 
     let _training = function () {
 
-        training = getRadio.value( 'calories', 'training' ); // Make global?
-        gender = getRadio.value( 'calories', 'gender' ); // Make global?
+        training = getRadio.init( 'calories', 'training' ); // Make global?
+        gender = getRadio.init( 'calories', 'gender' ); // Make global?
 
         if ( training === 'fat' ) {
 
@@ -191,44 +189,24 @@ let calories = (function () {
 
 
     /**
-     * [_appendData description]
+     * [_formSubmit description]
      * @return {[type]} [description]
      */
 
-    let _appendData = function ( event ) {
+    let _formSubmit = function () {
+
+      let onSubmit = function( event ) {
 
         event.preventDefault();
 
-        let macros = _macros(),
-            caloriesTraining = document.querySelector( defaults.classes.training ),
-            caloriesRest = document.querySelector( defaults.classes.rest ),
-            carbs = document.querySelector( defaults.classes.carbs ),
-            protein = document.querySelector( defaults.classes.protein ),
-            fat = document.querySelector( defaults.classes.fat ),
-            fiber = document.querySelector( defaults.classes.fiber );
+        console.log( _macros() );
 
+      };
 
-        // bind results to DOM
-        caloriesTraining.innerHTML =  macros.caloriesTraining;
-        caloriesRest.innerHTML =  macros.caloriesRest;
-        carbs.innerHTML =  'training: ' + macros.carbs.training + ' rest: ' + macros.carbs.rest;
-        protein.innerHTML =  macros.protein;
-        fat.innerHTML = 'training: ' + macros.fat.training + ' rest: ' + macros.fat.rest;
-        fiber.innerHTML =  'training: ' + macros.fibre.training + 'rest: ' + macros.fibre.rest;
+      defaults.form.addEventListener( 'submit', onSubmit, false );
+
 
     };
-
-
-    /**
-     * [_bindEvents description]
-     * @return {[type]} [description]
-     */
-
-    let _bindEvents = function () {
-
-        defaults.form.addEventListener( 'submit', _appendData, false );
-
-    }
 
 
     /**
@@ -239,7 +217,9 @@ let calories = (function () {
     let init = function () {
 
         // public
-        _bindEvents();
+        console.log( 'Init calories module' );
+
+        _formSubmit();
 
     };
 
@@ -249,6 +229,6 @@ let calories = (function () {
 
     };
 
-})();
+})( getRadio || {} );
 
 export default calories;
