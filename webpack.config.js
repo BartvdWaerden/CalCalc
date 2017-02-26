@@ -1,31 +1,35 @@
-const path = require( 'path' );
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require( 'path' ),
+      ExtractTextPlugin = require('extract-text-webpack-plugin'),
+      HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './app/index.js',
+
+    devtool: 'source-map',
+
+    context: path.join(__dirname, 'app'),
+
+    entry: {
+        app: './app.js'
+    },
 
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].bundle.js'
     },
 
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000
+        inline: true,
+        stats: 'errors-only'
     },
-
-    watch: true,
 
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
+                include: path.join(__dirname, 'app'),
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
             },
             {
                 test: /\.css$/,
@@ -38,6 +42,12 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin('[name].bundle.css'),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'app', 'index.html' ),
+            hash: true,
+            chunk: ['app']
+        })
     ]
+
 };
