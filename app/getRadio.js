@@ -1,50 +1,38 @@
 let getRadio = (function () {
 
-
     /**
-     * [_getRadioVal description]
-     * @param  {[type]} formName  [description]
-     * @param  {[type]} radioName [description]
-     * @return {[type]}           [description]
+     * Get the value of a radio button in a specific form
+     *
+     * @param  {string} formName  the class name of the form element
+     * @param  {string} radioName the name attribute of the radio button
+     * @return {string}           the value of the radio button
      */
 
-    let _getRadioVal = function ( formName, radioName ) {
+    let getRadioVal = function ( formName, radioName ) {
 
-        let form = document.getElementById( formName );
-        let radios = document.getElementsByName( radioName );
-
-        let i;
-        let amount;
+        let form = document.querySelector( formName ),
+            radios = document.getElementsByName( radioName ),
+            i,
+            amount;
 
         for ( i = 0, amount = radios.length; i < amount; i++ ) {
 
-            if (radios[i].checked) {
+            if ( radios[i].checked ) {
                 return radios[i].value;
                 break;
             }
 
         }
 
-
     };
 
     /**
-     * [init description]
-     * @return {[type]} [description]
+     * Retun the 'getRadioVal' function
      */
-
-    let init = function ( formName, radioName) {
-
-        // public
-        // console.log( 'Init radios module' );
-
-        _getRadioVal( formName, radioName);
-
-    };
 
     return {
 
-        init: _getRadioVal
+        value: getRadioVal
 
     };
 

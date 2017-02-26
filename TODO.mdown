@@ -1,6 +1,5 @@
 # TODO
 
-* Fill in docblocks calories.js
-* Create seperate module for get radio values and extend in calories.js
 * Webpack watch + automatic reload
 * Add Spijker-Hoven method
+* Add inches and lbs calculation option
