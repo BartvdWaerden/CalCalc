@@ -1,5 +1,6 @@
 # TODO
 
-* Webpack watch + automatic reload
+* Fix reloading
+* Add build script (https://www.youtube.com/watch?v=_avgBHB93mI)
 * Add Spijker-Hoven method
 * Add inches and lbs calculation option

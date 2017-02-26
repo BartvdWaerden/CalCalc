@@ -1,4 +1,5 @@
 const path = require( 'path' ),
+      webpack = require ('webpack');
       ExtractTextPlugin = require('extract-text-webpack-plugin'),
       HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -6,10 +7,10 @@ module.exports = {
 
     devtool: 'source-map',
 
-    context: path.join(__dirname, 'app'),
+    context: path.join(__dirname, 'src'),
 
     entry: {
-        app: './app.js'
+        app: './app/index'
     },
 
     output: {
@@ -20,6 +21,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         inline: true,
+        hot: true,
         stats: 'errors-only'
     },
 
@@ -27,27 +29,56 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                include: path.join(__dirname, 'app'),
                 loader: 'babel-loader',
+                include: path.join(__dirname, 'src'),
+                exclude: /(node_modules|bower_components)/,
             },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader'
-                })
+                    use: 'css-loader?minimize!postcss-loader'
+                }),
+                include: path.join(__dirname, 'src/')
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'file-loader',
+                include: path.join(__dirname, 'src/')
             }
         ]
     },
 
+    resolve: {
+
+        alias: {
+            'styles': path.resolve(__dirname, 'src/styles'),
+            'assets': path.resolve(__dirname, 'src/assets')
+        }
+
+    },
+
     plugins: [
-        new ExtractTextPlugin('[name].bundle.css'),
+
+        new webpack.HotModuleReplacementPlugin(),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common'
+        }),
+
+        new ExtractTextPlugin({
+            filename: '[name].styles.css',
+            allChunks: true
+        }),
+
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'app', 'index.html' ),
+            template: path.join(__dirname, 'src', 'index.html' ),
+            inject: 'body',
+            // excludeChunks: [], // exclude certain pages etc.
             hash: true,
-            chunk: ['app']
+            filename: 'index.html'
         })
+
     ]
 
 };
