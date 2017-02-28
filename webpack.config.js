@@ -3,6 +3,9 @@ const path = require( 'path' ),
       ExtractTextPlugin = require('extract-text-webpack-plugin'),
       HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+const processCss = isProduction ? '?minimize!postcss-loader' : '';
+
 module.exports = {
 
     devtool: 'source-map',
@@ -37,7 +40,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader?minimize!postcss-loader'
+                    use: `css-loader${processCss}`
                 }),
                 include: path.join(__dirname, 'src/')
             },
@@ -60,15 +63,14 @@ module.exports = {
 
     plugins: [
 
-        new webpack.HotModuleReplacementPlugin(),
-
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common'
         }),
 
         new ExtractTextPlugin({
             filename: '[name].styles.css',
-            allChunks: true
+            allChunks: true,
+            disable: !isProduction
         }),
 
         new HtmlWebpackPlugin({
@@ -77,7 +79,9 @@ module.exports = {
             // excludeChunks: [], // exclude certain pages etc.
             hash: true,
             filename: 'index.html'
-        })
+        }),
+
+        new webpack.HotModuleReplacementPlugin(),
 
     ]
 
