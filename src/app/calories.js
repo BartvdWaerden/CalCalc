@@ -214,9 +214,7 @@ let calories = (function () {
      * Bind results calculated in '_macros' to DOM elements
      */
 
-    let _appendData = function ( event ) {
-
-        event.preventDefault();
+    let _appendData = function () {
 
         let macros = _macros(),
             caloriesTraining = document.querySelector( defaults.classes.training ),
@@ -244,7 +242,11 @@ let calories = (function () {
 
     let _bindEvents = function () {
 
-        defaults.form.addEventListener( 'submit', _appendData, false );
+        let events = ['keyup', 'change'];
+
+        for ( let i = 0; i < events.length; i++ ) {
+            defaults.form.addEventListener( events[i], _appendData, false);
+        }
 
     }
 
@@ -258,6 +260,7 @@ let calories = (function () {
         _bindEvents();
 
     };
+
 
     /**
      * Return an object exposed to the public
