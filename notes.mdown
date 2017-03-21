@@ -30,3 +30,18 @@ is called 'shadowing' (the ineer identifier 'shadows' the outer identifier).
 Regardless of 'shadowing', scope look-up always starts at the innermost scope
 being executed at the time, and woks its way outward/upward until the first
 match, and stops.
+
+
+# This & Object Prototypes
+
+## Chapter 1 - this All makes Sense Now
+The ``this`` keyword is a special identifier keyword that's automatically defined in the scope of every function.
+
+The ``this`` mechanism provides a more elegant way of implicitly "passing along" an object reference, leading to cleaner API design and easier reuse.
+
+This is actually a binding that is made when a function is invoked, and "what" it references is determined entirely by the call-site where the function is called.
+
+## Chapter 2 - this All makes Sense Now!
+
+• **Call-site**: The location in code where a function is called (not where it's declared)
+• **Call-stack**: The stack of functions that haven been called to get us to the current moment in execution
