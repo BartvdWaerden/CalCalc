@@ -3,3 +3,5 @@
 * Add Spijker-Hoven method
 * Add inches and lbs calculation option
 * env babel plugin in package.json
+* ESLint Airbnb
+* JSON hash in dist

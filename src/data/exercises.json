@@ -1,0 +1,647 @@
+{
+    "foamroll": [
+        {
+            "name": "Foamroll bovenbeen",
+            "startingPosition": "Steun met één bovenbeen op een foamroller. De handen plaats je onder de schouders op de grond.",
+            "description": "Rol met je been heen en weer over de foamroller vanaf je knie naar je lies. Draai je been tijdens het rollen naar binnen en naar buiten.",
+            "attention": "Zoek het punt op waar je de meeste pijn voelt en rol daar wat langer overheen. Kruis eventueel de benen over elkaar om meer druk te genereren.",
+            "area": "x"
+        },
+        {
+            "name": "Foamroll kuit",
+            "startingPosition": "Leg een foamroller onder een kuit. Het ander been houd je gebogen met de voet plat op de grond. De handen rusten achter het lichaam.",
+            "description": "Rol met je kuit heen en weer over de foamroller vanaf je knieholte naar het einde van je bovenbeen. Draai je been tijdens het rollen naar binnen en naar buiten.",
+            "attention": "Zoek het punt op waar je de meeste pijn voelt en rol daar wat langer overheen. Kruis eventueel de benen over elkaar om meer druk te genereren.",
+            "area": "x"
+        },
+        {
+            "name": "Foamroll bil",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Foamroll hamstrings",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        }
+    ],
+    "stretch": [
+        {
+            "name": "Swisball lat-stretch",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Side lying windmill",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell lying Powell raise",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Birddog",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Quadrup",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dead bug",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell trap 3",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Swissball roll-out kniepositie",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Enkelmobiliteit voorwaarts met schijf",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Hip flexor stretch",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Kneelift op de plaats",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Handwalk achterwaarts achilles stretch",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Squat progression rotation",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Kneelift lunge mountain climber",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Forward plank swisball rotation",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pulley standing one arm rotator cuff",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        }
+    ],
+    "cardio": [
+        {
+            "name": "Waveloading fiets",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Tabata fiets",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Tabata roei-ergometer",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Waveloading roei-ergometer",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Waveloading crosstrainer",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Tabata crosstrainer",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        }
+    ],
+    "strength": [
+        {
+            "name":"Bench press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Pull upp (added weight)",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Barbell incline bench press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Lat pulldown wide grip",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Palloff pres",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Barbell romanian deadlift",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Barbell lunges",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name":"Leg curl",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell deep push up",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pulley bent over row",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Cable chest fly",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Face pull 2 fasen",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Butterfly lateral raises",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell incline hammer curl",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pulley rope standing triceps extension",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell one leg Romanian deadlift",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell lunge voor/achter",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell one leg glute bridge",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell one leg calf raise",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Glute bridge",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell elevated split squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell one arm bench press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Poliquin step-up",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Swissball roll-out kniepositie",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pull up toegeven",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell trap 3 prone raise",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Machine seated row neutral grip",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell incline V-press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "GOblet squat lateral shift",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell overhead squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Swissball schijf rotatie",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell bulgarian split squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Hip thrust schijf",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Seated calf raise",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell squat heel elevated",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell deadlift",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "EZ-Bar triceps skullcrusher",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell T-bar row",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell fly",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell bench press biacromiaal",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Chin ups assisted",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell glute bridge",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell Front Squat gekruist",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Rope pull through",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Goblet squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell split squat",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Leg curl",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Kettlebell swings",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Subscapularis pull up",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Lat prayer",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell row incline",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Push up resistance band",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pulley one arm side raises",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Rol-out kniepositie",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell standing side raises",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Dumbell incline biceps curl om en om",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Incline dumbell press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Machine seated one arm pulley row",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Seated military press",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Pulley rope overhead triceps extension",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Barbell biceps curl",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Leg extensions",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        },
+        {
+            "name": "Seated calf raise",
+            "startingPosition": "x",
+            "description": "x",
+            "attention": "x",
+            "area": "x"
+        }
+    ]
+}

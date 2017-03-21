@@ -1,3 +1,5 @@
+// import exercises from '../data/exercises.json'
+
 let exercise = (function () {
 
     /**
@@ -7,14 +9,14 @@ let exercise = (function () {
 
     // find the desired selectors
     let btn = document.getElementById('request'),
-    bio = document.getElementById('bio');
+        bio = document.getElementById('bio');
 
     // set up a request
-    let request = new XMLHttpRequest();
+    let request = new XMLHttpRequest(),
+        exercises = require('../data/exercises.json');
 
-    // specify the type of request
-    // request.open('Get', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/Bio.txt');
-    request.open('Get', 'test.json');
+        // specify the type of request
+        request.open( 'Get', exercises );
 
 
 
@@ -28,16 +30,55 @@ let exercise = (function () {
 
     // };
 
+    /**
+     * Get exercise data
+     */
+
+    const _getData = function () {
+
+        // keep track of the request
+        request.onreadystatechange = function() {
+
+            // check if the response data send back to us && check if the request is successful
+            if(request.readyState === 4 && request.status === 200 ) {
+                // add a border
+                bio.style.border = '1px solid #e8e8e8';
+
+                // uncomment the line below to see the request
+                var exercises = JSON.parse(request.responseText);
+
+                var foamroll = exercises.foamroll;
+                console.log(foamroll);
+
+                var stretch = exercises.stretch;
+                console.log(stretch);
+
+                var cardio = exercises.cardio;
+                console.log(cardio);
+
+                var strength = exercises.strength;
+                console.log(strength);
+
+                // update the HTML of the element
+                bio.innerHTML = request.responseText;
+            } else {
+                // otherwise display an error message
+                bio.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
+            }
+        }
+
+
+    }
 
     /**
      * Setup
      */
 
-    // const _setup = function () {
+    const _setup = function () {
 
 
 
-    // }
+    }
 
     /**
      * Bind events
@@ -45,24 +86,7 @@ let exercise = (function () {
 
     const _bindEvents = function () {
 
-    // keep track of the request
-        request.onreadystatechange = function() {
-            // check if the response data send back to us
-            if(request.readyState === 4) {
-                // add a border
-                bio.style.border = '1px solid #e8e8e8';
-                // uncomment the line below to see the request
-                // console.log(request);
-                // check if the request is successful
-                if(request.status === 200) {
-                    // update the HTML of the element
-                    bio.innerHTML = request.responseText;
-                } else {
-                    // otherwise display an error message
-                    bio.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
-                }
-            }
-        }
+        _getData();
 
         // register an event
         btn.addEventListener('click', function() {
@@ -72,6 +96,8 @@ let exercise = (function () {
             request.send();
         });
 
+
+
     };
 
 
@@ -80,6 +106,7 @@ let exercise = (function () {
      */
 
     const init = function () {
+
 
         _bindEvents();
 
