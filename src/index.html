@@ -11,16 +11,16 @@
 
 <h1>Calories Calculator</h1>
 
-    <form name="calories" class="calories">
+    <form class="c-form" name="calories">
 
         <label>Weight:</label>
-        <input type="number" name="weight" placeholder="weight" value="73" step="any" />
+        <input class="c-input" type="number" name="weight" placeholder="weight" step="any" />
 
         <label>Length:</label>
-        <input type="number" name="length" placeholder="length" value="189" step="any" />
+        <input class="c-input" type="number" name="length" placeholder="length" step="any" />
 
         <label>Age:</label>
-        <input type="number" name="age" placeholder="age" value="26"/>
+        <input class="c-input" type="number" name="age" placeholder="age" />
 
         <label>Gender:</label>
         <input type="radio" name="gender" value="male" checked>Male
@@ -49,6 +49,11 @@
         <span class="fiber"></span>
 
     </form>
+
+<div>
+  <button id="request">Learn more about Einstein</button>
+  <div id="bio"></div>
+</div>
 
 </body>
 
