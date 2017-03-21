@@ -22,7 +22,8 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        // contentBase: path.join(__dirname, 'dist'),
+        contentBase: false,
         inline: true,
         hot: true,
         stats: 'errors-only'
@@ -48,6 +49,12 @@ module.exports = {
                 test: /\.(png|jpg)$/,
                 loader: 'file-loader',
                 include: path.join(__dirname, 'src/')
+            },
+            {
+                test: /\.json$/,
+                use: 'json-loader',
+                include: path.join(__dirname, 'src/'),
+                exclude: /(node_modules|bower_components)/
             }
         ]
     },
@@ -56,7 +63,8 @@ module.exports = {
 
         alias: {
             'styles': path.resolve(__dirname, 'src/styles'),
-            'assets': path.resolve(__dirname, 'src/assets')
+            'assets': path.resolve(__dirname, 'src/assets'),
+            'data': path.resolve(__dirname, 'src/data')
         }
 
     },

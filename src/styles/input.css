@@ -1,0 +1,11 @@
+.c-input {
+    padding: .25rem; /* To keep vertical rhythm it should be smaller than rhythm podding of `.o-form__label`. */
+    border: .125em solid green;
+    background-color: red;
+    -webkit-appearance: none; /* Reset iOS inset shadow on inputs. */
+}
+
+.c-input:focus {
+    border-color: lime;
+    background-color: blue;
+}

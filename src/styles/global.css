@@ -1,7 +1,13 @@
-body {
-    background-color: green;
-    background-image: url('~assets/image.jpg');
-    display: flex;
+body,
+html { overflow-x: hidden; }
+
+html {
+    position: relative;
+    min-height: 100%;
+    color: gray;
+    font-size: 1rem;
+    font-family: sans-serif;
+    font-weight: 400;
 }
 
 
