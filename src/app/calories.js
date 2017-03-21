@@ -60,7 +60,7 @@ let calories = (function () {
      * @return {number} BMR in calories needed per day for a male or female.
      */
 
-    let _harrisBenedict = function () {
+    const _harrisBenedict = function () {
 
         weight = parseFloat( document.querySelector( defaults.classes.weight ).value );
         length = parseFloat( document.querySelector( defaults.classes.length ).value );
@@ -80,7 +80,8 @@ let calories = (function () {
 
             return value;
         }
-    }
+
+    };
 
 
     /**
@@ -90,14 +91,14 @@ let calories = (function () {
      * @return {number} amount of calories needed including daily activities.
      */
 
-    let _bmrPlusPal = function () {
+    const _bmrPlusPal = function () {
 
         pal = getRadio.value( 'calories', 'pal' );
 
         let value = _harrisBenedict() * pal;
         return value;
 
-    }
+    };
 
 
     /**
@@ -108,7 +109,7 @@ let calories = (function () {
      * day.
      */
 
-    let _training = function () {
+    const _training = function () {
 
         training = getRadio.value( 'calories', 'training' );
         gender = getRadio.value( 'calories', 'gender' );
@@ -117,8 +118,8 @@ let calories = (function () {
 
             if ( gender === 'male' ) {
 
-                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 );
-                let rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
+                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 ),
+                    rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
 
                 return {
                     training: training,
@@ -128,8 +129,8 @@ let calories = (function () {
 
             } else if ( gender === 'female' ) {
 
-                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 );
-                let rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
+                let training = _bmrPlusPal() - ( _bmrPlusPal() * .18 ),
+                    rest = _bmrPlusPal() - ( _bmrPlusPal() * .22 );
 
                 return {
                     training: training,
@@ -142,8 +143,8 @@ let calories = (function () {
 
             if ( gender === 'male' ) {
 
-                let training  = _bmrPlusPal() * 1.2;
-                let rest  = _bmrPlusPal() * 1.1;
+                let training  = _bmrPlusPal() * 1.2,
+                    rest  = _bmrPlusPal() * 1.1;
 
                 return {
                     training: training,
@@ -152,8 +153,8 @@ let calories = (function () {
 
             } else if ( gender === 'female' ) {
 
-                let training  = _bmrPlusPal() * 1.1;
-                let rest  = _bmrPlusPal() * 1.05;
+                let training  = _bmrPlusPal() * 1.1,
+                    rest  = _bmrPlusPal() * 1.05;
 
                 return {
                     training: training,
@@ -164,7 +165,7 @@ let calories = (function () {
 
         }
 
-    }
+    };
 
 
     /**
@@ -176,7 +177,7 @@ let calories = (function () {
      * 'rest' day.
      */
 
-    let _macros = function () {
+    const _macros = function () {
 
         let calories = _training(),
             caloriesTraining = Math.round( calories.training ),
@@ -207,14 +208,15 @@ let calories = (function () {
             fat: fat,
             fiber: fiber
         };
-    }
+
+    };
 
 
     /**
      * Bind results calculated in '_macros' to DOM elements
      */
 
-    let _appendData = function () {
+    const _appendData = function () {
 
         let macros = _macros(),
             caloriesTraining = document.querySelector( defaults.classes.training ),
@@ -240,22 +242,22 @@ let calories = (function () {
      * Bind events
      */
 
-    let _bindEvents = function () {
+    const _bindEvents = function () {
 
-        let events = ['keyup', 'change'];
+        let events = ['keyup', 'change', 'click'];
 
         for ( let i = 0; i < events.length; i++ ) {
             defaults.form.addEventListener( events[i], _appendData, false);
         }
 
-    }
+    };
 
 
     /**
      * Init the module
      */
 
-    let init = function () {
+    const init = function () {
 
         _bindEvents();
 
