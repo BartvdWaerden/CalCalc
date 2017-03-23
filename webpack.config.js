@@ -33,9 +33,9 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                loader: 'babel-loader!eslint-loader',
                 include: path.join(__dirname, 'src'),
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules|bower_components)/
             },
             {
                 test: /\.css$/,
