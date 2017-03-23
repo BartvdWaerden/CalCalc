@@ -1,5 +1,3 @@
-import extend from './extend.js'
-
 let exercise = (function () {
 
     /**
@@ -72,11 +70,11 @@ let exercise = (function () {
      * Setup
      */
 
-    const _setup = function () {
+    // const _setup = function () {
 
 
 
-    }
+    // }
 
     /**
      * Bind events
@@ -107,7 +105,7 @@ let exercise = (function () {
 
         // Setup settings.
         options = options || {};
-        settings = extend.init( {}, defaults, options );
+        settings = Object.assign( {}, defaults, options );
 
         _bindEvents();
 
