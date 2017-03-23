@@ -5,4 +5,4 @@
 * env babel plugin in package.json
 * ESLint Airbnb
 * JSON hash in dist
-* Figure out naticve extend and document it, make it global function
+* Create setup for calories module
