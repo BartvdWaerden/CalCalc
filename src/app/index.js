@@ -7,7 +7,9 @@ import exercise from './exercise.js';
 // import 'styles/form.css';
 // import 'styles/input.css';
 
-
 calories.init();
-exercise.init();
+exercise.init({
+    url: require( '../data/exercises.json' )
+});
+
 // ydkjs.init();

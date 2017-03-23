@@ -1,4 +1,4 @@
-// import exercises from '../data/exercises.json'
+import extend from './extend.js'
 
 let exercise = (function () {
 
@@ -7,17 +7,7 @@ let exercise = (function () {
      * module.
      */
 
-    // find the desired selectors
-    let btn = document.getElementById('request'),
-        bio = document.getElementById('bio');
-
-    // set up a request
-    let request = new XMLHttpRequest(),
-        exercises = require('../data/exercises.json');
-
-        // specify the type of request
-        request.open( 'Get', exercises );
-
+     let settings;
 
 
     /**
@@ -26,9 +16,12 @@ let exercise = (function () {
      * @type {Object}
      */
 
-    // const defaults = {
-
-    // };
+    const defaults = {
+        btn: document.getElementById( 'request' ),
+        container: document.getElementById( 'container' ),
+        request: new XMLHttpRequest(),
+        url: ''
+    };
 
     /**
      * Get exercise data
@@ -36,34 +29,39 @@ let exercise = (function () {
 
     const _getData = function () {
 
+        // specify the type of request
+        settings.request.open( 'Get', settings.url );
+
         // keep track of the request
-        request.onreadystatechange = function() {
+        settings.request.onreadystatechange = function() {
 
             // check if the response data send back to us && check if the request is successful
-            if(request.readyState === 4 && request.status === 200 ) {
+            if( settings.request.readyState === 4 && settings.request.status === 200 ) {
+
                 // add a border
-                bio.style.border = '1px solid #e8e8e8';
+                settings.container.style.border = '1px solid #e8e8e8';
 
                 // uncomment the line below to see the request
-                var exercises = JSON.parse(request.responseText);
+                var exercises = JSON.parse( settings.request.responseText );
 
                 var foamroll = exercises.foamroll;
-                console.log(foamroll);
+                console.log( foamroll );
 
                 var stretch = exercises.stretch;
-                console.log(stretch);
+                console.log( stretch );
 
                 var cardio = exercises.cardio;
-                console.log(cardio);
+                console.log( cardio );
 
                 var strength = exercises.strength;
-                console.log(strength);
+                console.log( strength );
 
                 // update the HTML of the element
-                bio.innerHTML = request.responseText;
+                settings.container.innerHTML = settings.request.responseText;
+
             } else {
                 // otherwise display an error message
-                bio.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
+                settings.container.innerHTML = 'An error occurred during your request: ' +  settings.request.status + ' ' + settings.request.statusText;
             }
         }
 
@@ -89,11 +87,11 @@ let exercise = (function () {
         _getData();
 
         // register an event
-        btn.addEventListener('click', function() {
+        settings.btn.addEventListener('click', function() {
             // hide the button
             this.style.display = 'none';
             // send the request
-            request.send();
+            settings.request.send();
         });
 
 
@@ -105,8 +103,11 @@ let exercise = (function () {
      * Init the module
      */
 
-    const init = function () {
+    const init = function ( options ) {
 
+        // Setup settings.
+        options = options || {};
+        settings = extend.init( {}, defaults, options );
 
         _bindEvents();
 
