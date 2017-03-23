@@ -1,14 +1,14 @@
-//import calories from './calories.js';
-import exercise from './exercise.js';
-// import ydkjs from './ydkjs.js';
+import calories from './module.calories.js';
+import getData from './module.getData.js';
+// import ydkjs from './module.ydkjs.js';
 
 // import 'styles/global.css';
 // // import 'styles/page.css';
 // import 'styles/form.css';
 // import 'styles/input.css';
 
-//calories.init();
-exercise.init({
+calories.init();
+getData.init({
     api: require( '../data/exercises.json' )
 });
 

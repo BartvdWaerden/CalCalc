@@ -1,5 +1,4 @@
-import getRadio from './getRadio.js'
-
+import getRadio from './module.getRadio.js'
 
 let calories = (function () {
 
@@ -240,6 +239,15 @@ let calories = (function () {
 
 
     /**
+     * Setup
+     */
+
+     const _setup = function () {
+
+    };
+
+
+    /**
      * Bind events
      */
 
@@ -263,6 +271,8 @@ let calories = (function () {
         // Setup settings.
         options = options || {};
         settings = Object.assign( {}, defaults, options );
+
+        _setup();
 
         _bindEvents();
 
