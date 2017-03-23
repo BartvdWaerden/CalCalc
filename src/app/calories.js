@@ -8,7 +8,8 @@ let calories = (function () {
      * module.
      */
 
-    let weight,
+    let settings,
+        weight,
         length,
         age,
         gender,
@@ -62,9 +63,9 @@ let calories = (function () {
 
     const _harrisBenedict = function () {
 
-        weight = parseFloat( document.querySelector( defaults.classes.weight ).value );
-        length = parseFloat( document.querySelector( defaults.classes.length ).value );
-        age = parseInt( document.querySelector( defaults.classes.age ).value );
+        weight = parseFloat( document.querySelector( settings.classes.weight ).value );
+        length = parseFloat( document.querySelector( settings.classes.length ).value );
+        age = parseInt( document.querySelector( settings.classes.age ).value );
 
         gender = getRadio.value( 'calories', 'gender' );
 
@@ -184,20 +185,20 @@ let calories = (function () {
             caloriesRest = Math.round( calories.rest ),
 
             fat = {
-                training: Math.round( ( caloriesTraining * .3 ) / defaults.calsPerGram.fat ),
-                rest: Math.round( ( caloriesRest * .3 ) / defaults.calsPerGram.fat )
+                training: Math.round( ( caloriesTraining * .3 ) / settings.calsPerGram.fat ),
+                rest: Math.round( ( caloriesRest * .3 ) / settings.calsPerGram.fat )
             },
 
             protein = Math.round( weight * 2.2 ),
 
             carbs = {
-                training: Math.round( ( caloriesTraining - ( ( fat.training * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs ),
-                rest: Math.round( ( caloriesRest - ( ( fat.rest * defaults.calsPerGram.fat ) + ( protein * defaults.calsPerGram.protein ) ) ) / defaults.calsPerGram.carbs )
+                training: Math.round( ( caloriesTraining - ( ( fat.training * settings.calsPerGram.fat ) + ( protein * settings.calsPerGram.protein ) ) ) / settings.calsPerGram.carbs ),
+                rest: Math.round( ( caloriesRest - ( ( fat.rest * settings.calsPerGram.fat ) + ( protein * settings.calsPerGram.protein ) ) ) / settings.calsPerGram.carbs )
             },
 
             fiber = {
-                training: Math.round( caloriesTraining * defaults.fiber ),
-                rest: Math.round( caloriesRest * defaults.fiber )
+                training: Math.round( caloriesTraining * settings.fiber ),
+                rest: Math.round( caloriesRest * settings.fiber )
             };
 
         return {
@@ -219,12 +220,12 @@ let calories = (function () {
     const _appendData = function () {
 
         let macros = _macros(),
-            caloriesTraining = document.querySelector( defaults.classes.training ),
-            caloriesRest = document.querySelector( defaults.classes.rest ),
-            carbs = document.querySelector( defaults.classes.carbs ),
-            protein = document.querySelector( defaults.classes.protein ),
-            fat = document.querySelector( defaults.classes.fat ),
-            fiber = document.querySelector( defaults.classes.fiber );
+            caloriesTraining = document.querySelector( settings.classes.training ),
+            caloriesRest = document.querySelector( settings.classes.rest ),
+            carbs = document.querySelector( settings.classes.carbs ),
+            protein = document.querySelector( settings.classes.protein ),
+            fat = document.querySelector( settings.classes.fat ),
+            fiber = document.querySelector( settings.classes.fiber );
 
 
         // Bind results to DOM
@@ -247,7 +248,7 @@ let calories = (function () {
         let events = ['keyup', 'change', 'click'];
 
         for ( let i = 0; i < events.length; i++ ) {
-            defaults.form.addEventListener( events[i], _appendData, false);
+            settings.form.addEventListener( events[i], _appendData, false);
         }
 
     };
@@ -257,7 +258,11 @@ let calories = (function () {
      * Init the module
      */
 
-    const init = function () {
+    const init = function ( options ) {
+
+        // Setup settings.
+        options = options || {};
+        settings = Object.assign( {}, defaults, options );
 
         _bindEvents();
 

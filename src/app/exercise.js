@@ -5,7 +5,8 @@ let exercise = (function () {
      * module.
      */
 
-     let settings;
+    let settings,
+        btn;
 
 
     /**
@@ -15,10 +16,10 @@ let exercise = (function () {
      */
 
     const defaults = {
-        btn: document.getElementById( 'request' ),
-        container: document.getElementById( 'container' ),
-        request: new XMLHttpRequest(),
-        url: ''
+        btn: 'request',
+        container: 'container',
+        request: new XMLHttpRequest(), // setup?
+        api: ''
     };
 
     /**
@@ -28,7 +29,7 @@ let exercise = (function () {
     const _getData = function () {
 
         // specify the type of request
-        settings.request.open( 'Get', settings.url );
+        settings.request.open( 'Get', settings.api );
 
         // keep track of the request
         settings.request.onreadystatechange = function() {
@@ -37,7 +38,7 @@ let exercise = (function () {
             if( settings.request.readyState === 4 && settings.request.status === 200 ) {
 
                 // add a border
-                settings.container.style.border = '1px solid #e8e8e8';
+                container.style.border = '1px solid #e8e8e8';
 
                 // uncomment the line below to see the request
                 var exercises = JSON.parse( settings.request.responseText );
@@ -55,26 +56,29 @@ let exercise = (function () {
                 console.log( strength );
 
                 // update the HTML of the element
-                settings.container.innerHTML = settings.request.responseText;
+                container.innerHTML = settings.request.responseText;
 
             } else {
                 // otherwise display an error message
-                settings.container.innerHTML = 'An error occurred during your request: ' +  settings.request.status + ' ' + settings.request.statusText;
+                container.innerHTML = 'An error occurred during your request: ' +  settings.request.status + ' ' + settings.request.statusText;
             }
         }
 
 
-    }
+    };
+
 
     /**
      * Setup
      */
 
-    // const _setup = function () {
+     const _setup = function () {
 
+        btn = document.getElementById( settings.btn );
 
+        setup = document.getElementById( settings.container );
 
-    // }
+    };
 
     /**
      * Bind events
@@ -85,11 +89,11 @@ let exercise = (function () {
         _getData();
 
         // register an event
-        settings.btn.addEventListener('click', function() {
+        btn.addEventListener('click', function() {
             // hide the button
             this.style.display = 'none';
             // send the request
-            settings.request.send();
+            settings.request.send(); // setup
         });
 
 
@@ -107,6 +111,7 @@ let exercise = (function () {
         options = options || {};
         settings = Object.assign( {}, defaults, options );
 
+        // _setup();
         _bindEvents();
 
     };

@@ -1,4 +1,4 @@
-import calories from './calories.js';
+//import calories from './calories.js';
 import exercise from './exercise.js';
 // import ydkjs from './ydkjs.js';
 
@@ -7,9 +7,9 @@ import exercise from './exercise.js';
 // import 'styles/form.css';
 // import 'styles/input.css';
 
-calories.init();
+//calories.init();
 exercise.init({
-    url: require( '../data/exercises.json' )
+    api: require( '../data/exercises.json' )
 });
 
 // ydkjs.init();
