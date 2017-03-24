@@ -230,7 +230,6 @@ const calories = (function () {
     settings = Object.assign({}, defaults, options);
 
     setup();
-
     bindEvents();
   };
 
