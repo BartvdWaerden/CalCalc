@@ -1,5 +1,5 @@
-import calories from './module.calories.js';
-import getData from './module.getData.js';
+import calories from './module.calories';
+import getData from './module.getData';
 // import ydkjs from './module.ydkjs.js';
 
 // import 'styles/global.css';
@@ -8,8 +8,6 @@ import getData from './module.getData.js';
 // import 'styles/input.css';
 
 calories.init();
-getData.init({
-    api: require( '../data/exercises.json' )
-});
+getData.init();
 
 // ydkjs.init();
