@@ -1,9 +1,11 @@
 # TODO
 
-* Add Spijker-Hoven method
-* Add inches and lbs calculation option
 * env babel plugin in package.json
 * JSON hash in dist
 * Create setup for calories module
 * Refactor getRadio function
 * Update readme
+
+# Consider
+* Add Spijker-Hoven method
+* Add inches and lbs calculation option
