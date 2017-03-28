@@ -1,9 +1,9 @@
 # TODO
 
-* env babel plugin in package.json
 * JSON hash in dist
 * Refactor getRadio function
 * Update readme
+* Add Foundation
 
 # Consider
 * Add Spijker-Hoven method
