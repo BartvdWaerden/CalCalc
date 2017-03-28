@@ -13,6 +13,7 @@ const calories = (function () {
   let gender;
   let training;
   let pal;
+  let form;
 
 
   /**
@@ -22,9 +23,6 @@ const calories = (function () {
    */
 
   const defaults = {
-
-    // Form name attribute.
-    form: document.querySelector('form[name=calories]'),
 
     // Amount of calories per type of macro.
     calsPerGram: {
@@ -122,6 +120,7 @@ const calories = (function () {
         restDay = bmrPlusPal() * 1.05;
       }
     }
+
     return {
       trainingDay,
       restDay,
@@ -140,8 +139,8 @@ const calories = (function () {
 
   const macronutrients = function () {
     const cals = typeOfTraining();
-    const caloriesTraining = Math.round(cals.training);
-    const caloriesRest = Math.round(cals.rest);
+    const caloriesTraining = Math.round(cals.trainingDay);
+    const caloriesRest = Math.round(cals.restDay);
 
     const fat = {
       training: Math.round((caloriesTraining * 0.3) / settings.calsPerGram.fat),
@@ -191,10 +190,10 @@ const calories = (function () {
     // Bind results to DOM
     caloriesTraining.innerHTML = macros.caloriesTraining;
     caloriesRest.innerHTML = macros.caloriesRest;
-    carbs.innerHTML = `training: ${macros.carbs.training} rest: ${macros.carbs.rest}`;
+    carbs.innerHTML = `carbs training: ${macros.carbs.training} rest: ${macros.carbs.rest}`;
     protein.innerHTML = macros.protein;
-    fat.innerHTML = `training: ${macros.fat.training} rest: ${macros.fat.rest}`;
-    fiber.innerHTML = `training: ${macros.fiber.training} rest: ${macros.fiber.rest}`;
+    fat.innerHTML = `fat training: ${macros.fat.training} rest: ${macros.fat.rest}`;
+    fiber.innerHTML = `fiber training: ${macros.fiber.training} rest: ${macros.fiber.rest}`;
   };
 
 
@@ -203,7 +202,7 @@ const calories = (function () {
    */
 
   const setup = function () {
-
+    form = document.querySelector('form[name=calories]');
   };
 
 
@@ -215,8 +214,10 @@ const calories = (function () {
     const events = ['keyup', 'change', 'click'];
 
     for (let i = 0; i < events.length; i += 1) {
-      settings.form.addEventListener(events[i], appendData, false);
+      form.addEventListener(events[i], appendData, false);
     }
+
+    macronutrients();
   };
 
 

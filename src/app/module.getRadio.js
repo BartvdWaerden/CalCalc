@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const getRadio = (function () {
   /**
    * Get the value of a radio button in a specific form

@@ -22,6 +22,7 @@ const getData = (function () {
     api: require('../data/exercises.json'), // eslint-disable-line global-require
   };
 
+
   /**
    * Get exercise data
    */
