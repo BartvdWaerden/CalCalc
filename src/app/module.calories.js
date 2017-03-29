@@ -24,6 +24,8 @@ const calories = (() => {
 
   const defaults = {
 
+    formName: 'calories',
+
     // Amount of calories per type of macro.
     calsPerGram: {
       fat: 9,
@@ -62,7 +64,7 @@ const calories = (() => {
     weight = parseFloat(document.querySelector(settings.classes.weight).value);
     length = parseFloat(document.querySelector(settings.classes.length).value);
     age = parseInt(document.querySelector(settings.classes.age).value, 10);
-    gender = getRadio.value('calories', 'gender');
+    gender = getRadio.value(settings.formName, 'gender');
 
     if (gender === 'male') {
       value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age));
@@ -82,7 +84,7 @@ const calories = (() => {
    */
 
   const bmrPlusPal = () => {
-    pal = getRadio.value('calories', 'pal');
+    pal = getRadio.value(settings.formName, 'pal');
 
     const value = harrisBenedict() * pal;
     return value;
@@ -100,8 +102,8 @@ const calories = (() => {
   const typeOfTraining = () => {
     let trainingDay;
     let restDay;
-    training = getRadio.value('calories', 'training');
-    gender = getRadio.value('calories', 'gender');
+    training = getRadio.value(settings.formName, 'training');
+    gender = getRadio.value(settings.formName, 'gender');
 
     if (training === 'fat') {
       if (gender === 'male') {
