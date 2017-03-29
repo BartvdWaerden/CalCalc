@@ -1,4 +1,4 @@
-const getData = (function () {
+const getData = (() => {
   /**
    * Set variables which are available within the entire 'scope' of the
    * module.
@@ -27,9 +27,9 @@ const getData = (function () {
    * Get exercise data
    */
 
-  const getApi = function () {
+  const getApi = () => {
     // keep track of the request
-    request.onreadystatechange = function () {
+    request.onreadystatechange = () => {
     // check if the response data send back to us && check if the request is successful
       if (request.readyState === 4 && request.status === 200) {
         // add a border
@@ -55,7 +55,7 @@ const getData = (function () {
    * Setup
    */
 
-  const setup = function () {
+  const setup = () => {
     request = new XMLHttpRequest();
 
     // specify the type of request
@@ -71,7 +71,7 @@ const getData = (function () {
    * Bind events
    */
 
-  const bindEvents = function () {
+  const bindEvents = () => {
     getApi();
 
     // register an event
@@ -88,7 +88,7 @@ const getData = (function () {
    * Init the module
    */
 
-  const init = function (options) {
+  const init = (options) => {
     // Setup settings.
     options = options || {};
     settings = Object.assign({}, defaults, options);
@@ -106,6 +106,6 @@ const getData = (function () {
   return {
     init,
   };
-}());
+})();
 
 export default getData;

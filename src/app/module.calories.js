@@ -1,6 +1,6 @@
 import getRadio from './module.getRadio';
 
-const calories = (function () {
+const calories = (() => {
   /**
    * Set variables which are available within the entire 'scope' of the
    * module.
@@ -57,7 +57,7 @@ const calories = (function () {
    * @return {number} BMR in calories needed per day for a male or female.
    */
 
-  const harrisBenedict = function () {
+  const harrisBenedict = () => {
     let value;
     weight = parseFloat(document.querySelector(settings.classes.weight).value);
     length = parseFloat(document.querySelector(settings.classes.length).value);
@@ -81,7 +81,7 @@ const calories = (function () {
    * @return {number} amount of calories needed including daily activities.
    */
 
-  const bmrPlusPal = function () {
+  const bmrPlusPal = () => {
     pal = getRadio.value('calories', 'pal');
 
     const value = harrisBenedict() * pal;
@@ -97,7 +97,7 @@ const calories = (function () {
    * day.
    */
 
-  const typeOfTraining = function () {
+  const typeOfTraining = () => {
     let trainingDay;
     let restDay;
     training = getRadio.value('calories', 'training');
@@ -137,7 +137,7 @@ const calories = (function () {
    * 'rest' day.
    */
 
-  const macronutrients = function () {
+  const macronutrients = () => {
     const cals = typeOfTraining();
     const caloriesTraining = Math.round(cals.trainingDay);
     const caloriesRest = Math.round(cals.restDay);
@@ -178,7 +178,7 @@ const calories = (function () {
    * Bind results calculated in 'macros' to DOM elements
    */
 
-  const appendData = function () {
+  const appendData = () => {
     const macros = macronutrients();
     const caloriesTraining = document.querySelector(settings.classes.training);
     const caloriesRest = document.querySelector(settings.classes.rest);
@@ -201,7 +201,7 @@ const calories = (function () {
    * Setup
    */
 
-  const setup = function () {
+  const setup = () => {
     form = document.querySelector('form[name=calories]');
   };
 
@@ -210,7 +210,7 @@ const calories = (function () {
    * Bind events
    */
 
-  const bindEvents = function () {
+  const bindEvents = () => {
     const events = ['keyup', 'change', 'click'];
 
     for (let i = 0; i < events.length; i += 1) {
@@ -225,7 +225,7 @@ const calories = (function () {
    * Init the module
    */
 
-  const init = function (options) {
+  const init = (options) => {
     // Setup settings.
     options = options || {};
     settings = Object.assign({}, defaults, options);
@@ -242,6 +242,6 @@ const calories = (function () {
   return {
     init,
   };
-}());
+})();
 
 export default calories;

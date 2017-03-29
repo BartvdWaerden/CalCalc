@@ -4,6 +4,7 @@
     "browser": 1
   },
   "rules": {
+    wrap-iife: ["error", "inside"],
     func-names: ["warn", "never"],
     no-param-reassign: 0
   }

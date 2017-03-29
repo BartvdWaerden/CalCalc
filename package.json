@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "browserslist": [
-    "last 2 versions",
+    "last 2 versions"
   ],
   "babel": {
     "presets": [

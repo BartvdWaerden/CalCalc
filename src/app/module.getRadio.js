@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const getRadio = (function () {
+const getRadio = (() => {
   /**
    * Get the value of a radio button in a specific form
    *
@@ -9,7 +9,7 @@ const getRadio = (function () {
    * @return {string}           the value of the radio button
    */
 
-  const getRadioVal = function (formName, radioName) {
+  const getRadioVal = (formName, radioName) => {
     const form = document.querySelector(formName);
     const radios = document.getElementsByName(radioName);
 
@@ -30,6 +30,6 @@ const getRadio = (function () {
   return {
     value: getRadioVal,
   };
-}());
+})();
 
 export default getRadio;
