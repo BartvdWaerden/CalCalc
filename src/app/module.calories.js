@@ -204,7 +204,7 @@ const calories = (() => {
    */
 
   const setup = () => {
-    form = document.querySelector('form[name=calories]');
+    form = document.querySelector(`form[name=${settings.formName}]`);
   };
 
 
