@@ -53,8 +53,7 @@ const calories = (() => {
 
 
   /**
-   * Calculate resting metabolic rate (BMR) with the Harris & Benedict
-   * formula.
+   * Calculate resting metabolic rate (BMR) with the Harris & Benedict formula.
    *
    * @return {number} BMR in calories needed per day for a male or female.
    */
@@ -74,6 +73,29 @@ const calories = (() => {
 
     return value;
   };
+
+
+  /**
+   * Calculate resting metabolic rate (BMR) with the Spijker-Hoven formula.
+   *
+   * @return {number} BMR in calories needed per day for a male or female.
+   */
+
+  // const spijkerHoven = () => {
+  //   let value;
+  //   weight = parseFloat(document.querySelector(settings.classes.weight).value);
+  //   length = parseFloat(document.querySelector(settings.classes.length).value);
+  //   age = parseInt(document.querySelector(settings.classes.age).value, 10);
+  //   gender = getRadio.value(settings.formName, 'gender');
+
+  //   if (gender === 'male') {
+  //     value = ((11.797 * weight) + (6.487 * length)) - ((5.180 * age) + (187.017 * 1)) - 139.444;
+  //   } else if (gender === 'female') {
+  //     value = ((11.797 * weight) + (6.487 * length)) - ((5.180 * age) + (187.017 * 0)) - 139.444;
+  //   }
+
+  //   return value;
+  // };
 
 
   /**
