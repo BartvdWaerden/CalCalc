@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        loader: 'file-loader',
+        loader: 'file-loader?name=[name].[hash].[ext]',
         include: path.join(__dirname, 'src/'),
         exclude: /(node_modules|bower_components)/,
       },

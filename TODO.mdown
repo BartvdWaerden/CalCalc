@@ -1,6 +1,5 @@
 # TODO
 
-* JSON hash in dist
 * Refactor getRadio function
 * Update readme
 * Add Foundation
