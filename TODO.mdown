@@ -1,7 +1,5 @@
 # TODO
-
 * Refactor getRadio function
-* Update readme
 * Add Foundation
 
 # Consider

@@ -1,9 +1,47 @@
 # Calorie calculator
-> A calorie calculator based on the Harris & Benedict formula.
+> A calorie calculator based on the Harris & Benedict formula
 
-A calorie calculator which calculates your daily amount of calories and corresponding macros based on your gender and goals.
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
+A calorie calculator which calculates your daily amount of calories and corresponding macro-nutrients based on your gender and goals.
 
+## Motivation
+This repository is part of my exploration of the JavaScript language and expanding my overall knowledge. Since I'm a firm believer of the following phrase:
+
+> First do it, then do it right, then do it better" - [Addy Osmani](https://twitter.com/addyosmani)
+
+It's more then likely that the code within this repository is far from optimal, but cut me some slack I'm getting there!
+
+## Requirements
+
+| Prerequisite    | How to check | How to install
+| --------------- | ------------ | ------------- |
+| Node.js 6.9.4  | `node -v`    | [nodejs.org](http://nodejs.org/) (Or with Homebrew) |
+
+## Features
+
+* [Webpack](https://webpack.js.org/) Module bundler
+* [Babel](http://https://babeljs.io/) JavaScript compiler for using next generation JavaScript today
+* [ESLint](http://eslint.org/) A pluggable linting utility for JavaScript
+* [Autoprefixer](https://github.com/postcss/autoprefixer) Parse CSS and add vendor prefixes
+
+## Development setup
+Run the following command from within the root of your project to install all project dependencies.
+
+```
+npm install
+```
+
+### Main workflow tasks
+
+* `npm start` — Fire up a server and start developing
+* `npm run build` — Compile assets to `dist` folder for production
+
+## Release History
+* 0.0.1
+    * Work in progress
+
+## Meta
 Bart van der Waerden – [@BartvdWaerden](https://twitter.com/BartvdWaerden)
 Distributed under the [MIT license](LICENSE.md).
 © [Bart van der Waerden](https://bartvanderwaerden.com/)
