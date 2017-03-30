@@ -1,7 +1,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
 # Calorie calculator
-> A calorie calculator based on the Harris & Benedict formula
+> A calorie calculator based on the Harris & Benedict and/or Spijker-Hoven formula
 
 A calorie calculator which calculates your daily amount of calories and corresponding macro-nutrients based on your gender and goals.
 

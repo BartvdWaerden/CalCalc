@@ -2,5 +2,4 @@
 * Add Foundation
 
 # Consider
-* Add Spijker-Hoven method
 * Add inches and lbs calculation option

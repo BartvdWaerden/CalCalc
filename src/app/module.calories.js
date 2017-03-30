@@ -12,6 +12,7 @@ const calories = (() => {
   let age;
   let gender;
   let training;
+  let formula;
   let pal;
   let form;
 
@@ -81,21 +82,21 @@ const calories = (() => {
    * @return {number} BMR in calories needed per day for a male or female.
    */
 
-  // const spijkerHoven = () => {
-  //   let value;
-  //   weight = parseFloat(document.querySelector(settings.classes.weight).value);
-  //   length = parseFloat(document.querySelector(settings.classes.length).value);
-  //   age = parseInt(document.querySelector(settings.classes.age).value, 10);
-  //   gender = getRadio.value(settings.formName, 'gender');
+  const spijkerHoven = () => {
+    let value;
+    weight = parseFloat(document.querySelector(settings.classes.weight).value);
+    length = parseFloat(document.querySelector(settings.classes.length).value);
+    age = parseInt(document.querySelector(settings.classes.age).value, 10);
+    gender = getRadio.value(settings.formName, 'gender');
 
-  //   if (gender === 'male') {
-  //     value = ((11.797 * weight) + (6.487 * length)) - ((5.180 * age) + (187.017 * 1)) - 139.444;
-  //   } else if (gender === 'female') {
-  //     value = ((11.797 * weight) + (6.487 * length)) - ((5.180 * age) + (187.017 * 0)) - 139.444;
-  //   }
+    if (gender === 'male') {
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444);
+    } else if (gender === 'female') {
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 0) - 139.444);
+    }
 
-  //   return value;
-  // };
+    return value;
+  };
 
 
   /**
@@ -106,9 +107,17 @@ const calories = (() => {
    */
 
   const bmrPlusPal = () => {
-    pal = getRadio.value(settings.formName, 'pal');
+    let value;
 
-    const value = harrisBenedict() * pal;
+    pal = getRadio.value(settings.formName, 'pal');
+    formula = getRadio.value(settings.formName, 'formula');
+
+    if (formula === 'harris') {
+      value = harrisBenedict() * pal;
+    } else if (formula === 'spijker') {
+      value = spijkerHoven() * pal;
+    }
+
     return value;
   };
 
@@ -254,6 +263,7 @@ const calories = (() => {
     options = options || {};
     settings = Object.assign({}, defaults, options);
 
+    bmrPlusPal();
     setup();
     bindEvents();
   };
