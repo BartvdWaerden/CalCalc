@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -13,12 +14,15 @@ module.exports = {
   context: path.join(__dirname, 'src'),
 
   entry: {
-    app: './app/index',
+    app: [
+      './app/index.js',
+      './styles/main.scss',
+    ],
   },
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].js', // finally should be '[name].[chunkhash].js for Long-Term Caching
   },
 
   devServer: {
@@ -30,7 +34,7 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [ // was loaders
       {
         test: /\.js$/,
         loader: 'babel-loader!eslint-loader',
@@ -38,16 +42,19 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
       },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/,
         use: ExtractTextPlugin.extract({
+          use: [`css-loader${processCss}`, 'sass-loader'],
           fallback: 'style-loader',
-          use: `css-loader${processCss}`,
         }),
         include: path.join(__dirname, 'src/'),
       },
       {
         test: /\.(png|jpg)$/,
         loader: 'file-loader',
+        options: {
+          name: 'images/[name].[hash].[ext]',
+        },
         include: path.join(__dirname, 'src/'),
       },
       {
@@ -74,8 +81,12 @@ module.exports = {
     }),
 
     new ExtractTextPlugin({
-      filename: '[name].styles.css',
+      filename: '[name].[hash].css',
       allChunks: true,
+      disable: !isProduction,
+    }),
+
+    new webpack.optimize.UglifyJsPlugin({
       disable: !isProduction,
     }),
 
@@ -87,8 +98,13 @@ module.exports = {
       filename: 'index.html',
     }),
 
+    new CleanWebpackPlugin(['dist'], {
+      root: __dirname,
+      verbose: true,
+      dry: false,
+    }),
+
     new webpack.HotModuleReplacementPlugin(),
 
   ],
-
 };

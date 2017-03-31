@@ -1,13 +1,19 @@
+$bg: green;
+
 body,
 html { overflow-x: hidden; }
 
 html {
+    display: flex;
     position: relative;
     min-height: 100%;
     color: gray;
     font-size: 1rem;
     font-family: sans-serif;
     font-weight: 400;
+    /*background-color: $bg;*/
+    /*background: url('./assets/image.jpg');*/
+    background-image: url('~assets/image.jpg');
 }
 
 
