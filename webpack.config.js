@@ -16,7 +16,7 @@ module.exports = {
   entry: {
     app: [
       './app/index.js',
-      './styles/main.scss',
+      './styles/app.scss',
     ],
   },
 

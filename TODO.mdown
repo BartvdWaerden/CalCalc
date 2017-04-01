@@ -9,3 +9,4 @@
 * Webpack condig entry  '[name].[chunkhash].js for Long-Term Caching https://laracasts.com/series/webpack-for-everyone/episodes/11?autoplay=true
 * https://webpack.js.org/guides/caching/ Long term caching
 * https://webpack.js.org/guides/production-build/
+* Remove unused css with https://github.com/webpack-contrib/purifycss-webpack
