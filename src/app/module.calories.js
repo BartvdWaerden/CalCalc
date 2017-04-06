@@ -61,8 +61,8 @@ const calories = (() => {
 
   const harrisBenedict = () => {
     let value;
-    weight = parseFloat(document.querySelector(settings.classes.weight).value);
-    length = parseFloat(document.querySelector(settings.classes.length).value);
+    weight = parseInt(document.querySelector(settings.classes.weight).value, 10);
+    length = parseInt(document.querySelector(settings.classes.length).value, 10);
     age = parseInt(document.querySelector(settings.classes.age).value, 10);
     gender = getRadio.value(settings.formName, 'gender');
 
