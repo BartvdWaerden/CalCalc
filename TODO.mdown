@@ -1,7 +1,6 @@
 # TODO
 
 ## Consider
-* Use one formula function instead of separate
 * Add inches and lbs calculation option
 
 ## Webpack

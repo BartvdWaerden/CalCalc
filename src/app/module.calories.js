@@ -7,20 +7,18 @@ const calories = (() => {
    */
 
   let settings;
+  let form;
   let weight;
   let length;
   let age;
   let gender;
   let training;
-  let formula;
-  let pal;
-  let form;
 
 
   /**
-   * Set default settings
+   * Set default settings.
    *
-   * @type {Object}
+   * @type {Object}.
    */
 
   const defaults = {
@@ -52,10 +50,9 @@ const calories = (() => {
 
   };
 
+
   /**
-   * Calculate resting metabolic rate (BMR) with the Harris & Benedict formula.
-   *
-   * @return {number} BMR in calories needed per day for a male or female.
+   * Assign global variables to corresponding elements.
    */
 
   const getValues = () => {
@@ -106,6 +103,27 @@ const calories = (() => {
 
 
   /**
+   * Get correct formula trough user input (default Harris & Benedict).
+   *
+   * @return {number} BMR in calories needed according to the formula chosen
+   * by the user.
+   */
+
+  const getFormula = () => {
+    let value;
+    const formula = getRadio.value(settings.formName, 'formula');
+
+    if (formula === 'harris') {
+      value = harrisBenedict();
+    } else if (formula === 'spijker') {
+      value = spijkerHoven();
+    }
+
+    return value;
+  };
+
+
+  /**
    * Calculate total amount of calories per day based on BMR including
    * daily activity (PAL-values).
    *
@@ -113,16 +131,8 @@ const calories = (() => {
    */
 
   const bmrPlusPal = () => {
-    let value;
-
-    pal = getRadio.value(settings.formName, 'pal');
-    formula = getRadio.value(settings.formName, 'formula');
-
-    if (formula === 'harris') {
-      value = formula() * pal;
-    } else if (formula === 'spijker') {
-      value = spijkerHoven() * pal;
-    }
+    const pal = getRadio.value(settings.formName, 'pal');
+    const value = getFormula() * pal;
 
     return value;
   };
@@ -214,10 +224,11 @@ const calories = (() => {
 
 
   /**
-   * Bind results calculated in 'macros' to DOM elements
+   * Bind results calculated in 'macros' to DOM elements.
    */
 
   const appendData = () => {
+    // Get (default) values.
     getValues();
     const macros = macronutrients();
     const caloriesTraining = document.querySelector(settings.classes.training);
@@ -242,12 +253,13 @@ const calories = (() => {
    */
 
   const setup = () => {
+    // Make sure there are default values on init.
     appendData();
   };
 
 
   /**
-   * Bind events
+   * Bind events.
    */
 
   const bindEvents = () => {
@@ -260,11 +272,11 @@ const calories = (() => {
 
 
   /**
-   * Init the module
+   * Init the module.
    */
 
   const init = (options) => {
-    // Setup settings.
+    // Setup settings
     options = options || {};
     settings = Object.assign({}, defaults, options);
 
@@ -274,7 +286,7 @@ const calories = (() => {
 
 
   /**
-   * Return an object exposed to the public
+   * Return an object exposed to the public.
    */
 
   return {
