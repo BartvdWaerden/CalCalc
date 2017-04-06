@@ -1,6 +1,7 @@
 # TODO
 
 ## Consider
+* move weight, length, age and gender to setup()
 * Add inches and lbs calculation option
 
 ## Webpack
