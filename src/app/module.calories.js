@@ -50,6 +50,57 @@ const calories = (() => {
 
   };
 
+  /**
+   * Convert inches to centimeters.
+   */
+
+  const inchesToCentimeters = (value) => {
+    value *= 2.54;
+
+    return value;
+  };
+
+
+  /**
+   * Convert pounds to kilograms.
+   */
+
+  const poundsToKilograms = (value) => {
+    value *= 0.45359237;
+
+    return value;
+  };
+
+
+  const getWeight = () => {
+    let value;
+    const mass = getRadio.value(settings.formName, 'mass');
+
+    if (mass === 'kilograms') {
+      value = value;
+    } else if (mass === 'pounds') {
+      value = poundsToKilograms();
+      console.log('pounds');
+    }
+
+    return value;
+  };
+
+
+  const getHeight = () => {
+    let value;
+    const height = getRadio.value(settings.formName, 'height');
+
+    if (height === 'centimeters') {
+      value = value;
+    } else if (height === 'inches') {
+      value = poundsToKilograms();
+      console.log('inches');
+    }
+
+    return value;
+  };
+
 
   /**
    * Assign global variables to corresponding elements.
@@ -74,9 +125,9 @@ const calories = (() => {
     let value;
 
     if (gender === 'male') {
-      value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age));
+      value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age)); // getWeight() & getHeight()?
     } else if (gender === 'female') {
-      value = 447.593 + (9.247 * weight) + ((3.098 * length) - (4.33 * age));
+      value = 447.593 + (9.247 * weight) + ((3.098 * length) - (4.33 * age)); // getWeight() & getHeight()?
     }
 
     return value;
@@ -93,9 +144,9 @@ const calories = (() => {
     let value;
 
     if (gender === 'male') {
-      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444);
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444); // getWeight() & getHeight()?
     } else if (gender === 'female') {
-      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 0) - 139.444);
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 0) - 139.444); // getWeight() & getHeight()?
     }
 
     return value;
