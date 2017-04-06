@@ -52,6 +52,20 @@ const calories = (() => {
 
   };
 
+  /**
+   * Calculate resting metabolic rate (BMR) with the Harris & Benedict formula.
+   *
+   * @return {number} BMR in calories needed per day for a male or female.
+   */
+
+  const getValues = () => {
+    form = document.querySelector(`form[name=${settings.formName}]`);
+    weight = parseInt(document.querySelector(settings.classes.weight).value, 10);
+    length = parseInt(document.querySelector(settings.classes.length).value, 10);
+    age = parseInt(document.querySelector(settings.classes.age).value, 10);
+    gender = getRadio.value(settings.formName, 'gender');
+  };
+
 
   /**
    * Calculate resting metabolic rate (BMR) with the Harris & Benedict formula.
@@ -61,10 +75,6 @@ const calories = (() => {
 
   const harrisBenedict = () => {
     let value;
-    weight = parseInt(document.querySelector(settings.classes.weight).value, 10);
-    length = parseInt(document.querySelector(settings.classes.length).value, 10);
-    age = parseInt(document.querySelector(settings.classes.age).value, 10);
-    gender = getRadio.value(settings.formName, 'gender');
 
     if (gender === 'male') {
       value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age));
@@ -84,10 +94,6 @@ const calories = (() => {
 
   const spijkerHoven = () => {
     let value;
-    weight = parseInt(document.querySelector(settings.classes.weight).value, 10);
-    length = parseInt(document.querySelector(settings.classes.length).value, 10);
-    age = parseInt(document.querySelector(settings.classes.age).value, 10);
-    gender = getRadio.value(settings.formName, 'gender');
 
     if (gender === 'male') {
       value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444);
@@ -113,7 +119,7 @@ const calories = (() => {
     formula = getRadio.value(settings.formName, 'formula');
 
     if (formula === 'harris') {
-      value = harrisBenedict() * pal;
+      value = formula() * pal;
     } else if (formula === 'spijker') {
       value = spijkerHoven() * pal;
     }
@@ -212,6 +218,7 @@ const calories = (() => {
    */
 
   const appendData = () => {
+    getValues();
     const macros = macronutrients();
     const caloriesTraining = document.querySelector(settings.classes.training);
     const caloriesRest = document.querySelector(settings.classes.rest);
@@ -235,7 +242,7 @@ const calories = (() => {
    */
 
   const setup = () => {
-    form = document.querySelector(`form[name=${settings.formName}]`);
+    appendData();
   };
 
 
@@ -249,8 +256,6 @@ const calories = (() => {
     for (let i = 0; i < events.length; i += 1) {
       form.addEventListener(events[i], appendData, false);
     }
-
-    macronutrients();
   };
 
 
@@ -263,7 +268,6 @@ const calories = (() => {
     options = options || {};
     settings = Object.assign({}, defaults, options);
 
-    bmrPlusPal();
     setup();
     bindEvents();
   };

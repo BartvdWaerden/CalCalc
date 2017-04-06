@@ -1,7 +1,7 @@
 # TODO
 
 ## Consider
-* move weight, length, age and gender to setup()
+* Use one formula function instead of separate
 * Add inches and lbs calculation option
 
 ## Webpack
