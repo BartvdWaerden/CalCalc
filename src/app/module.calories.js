@@ -8,6 +8,8 @@ const calories = (() => {
 
   let settings;
   let form;
+  let formWeight;
+  let formLength;
   let weight;
   let length;
   let age;
@@ -50,16 +52,6 @@ const calories = (() => {
 
   };
 
-  /**
-   * Convert inches to centimeters.
-   */
-
-  const inchesToCentimeters = (value) => {
-    value *= 2.54;
-
-    return value;
-  };
-
 
   /**
    * Convert pounds to kilograms.
@@ -72,30 +64,32 @@ const calories = (() => {
   };
 
 
-  const getWeight = () => {
-    let value;
+  const getWeight = (value) => {
     const mass = getRadio.value(settings.formName, 'mass');
 
-    if (mass === 'kilograms') {
-      value = value;
-    } else if (mass === 'pounds') {
-      value = poundsToKilograms();
-      console.log('pounds');
+    if (mass === 'pounds') {
+      value = poundsToKilograms(value);
     }
 
     return value;
   };
 
 
-  const getHeight = () => {
-    let value;
+  /**
+   * Convert inches to centimeters.
+   */
+
+  const inchesToCentimeters = (value) => {
+    value *= 2.54;
+
+    return value;
+  };
+
+  const getLength = (value) => {
     const height = getRadio.value(settings.formName, 'height');
 
-    if (height === 'centimeters') {
-      value = value;
-    } else if (height === 'inches') {
-      value = poundsToKilograms();
-      console.log('inches');
+    if (height === 'inches') {
+      value = inchesToCentimeters(value);
     }
 
     return value;
@@ -108,8 +102,10 @@ const calories = (() => {
 
   const getValues = () => {
     form = document.querySelector(`form[name=${settings.formName}]`);
-    weight = parseInt(document.querySelector(settings.classes.weight).value, 10);
-    length = parseInt(document.querySelector(settings.classes.length).value, 10);
+    formWeight = parseFloat(document.querySelector(settings.classes.weight).value, 10);
+    formLength = parseFloat(document.querySelector(settings.classes.length).value, 10);
+    weight = getWeight(formWeight);
+    length = getLength(formLength);
     age = parseInt(document.querySelector(settings.classes.age).value, 10);
     gender = getRadio.value(settings.formName, 'gender');
   };
@@ -125,9 +121,9 @@ const calories = (() => {
     let value;
 
     if (gender === 'male') {
-      value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age)); // getWeight() & getHeight()?
+      value = 88.362 + (13.397 * weight) + ((4.799 * length) - (5.677 * age));
     } else if (gender === 'female') {
-      value = 447.593 + (9.247 * weight) + ((3.098 * length) - (4.33 * age)); // getWeight() & getHeight()?
+      value = 447.593 + (9.247 * weight) + ((3.098 * length) - (4.33 * age));
     }
 
     return value;
@@ -144,9 +140,9 @@ const calories = (() => {
     let value;
 
     if (gender === 'male') {
-      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444); // getWeight() & getHeight()?
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 1) - 139.444);
     } else if (gender === 'female') {
-      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 0) - 139.444); // getWeight() & getHeight()?
+      value = (((11.797 * weight) + (6.487 * length)) - (5.180 * age)) + ((187.017 * 0) - 139.444);
     }
 
     return value;
@@ -331,6 +327,7 @@ const calories = (() => {
     options = options || {};
     settings = Object.assign({}, defaults, options);
 
+    getValues();
     setup();
     bindEvents();
   };

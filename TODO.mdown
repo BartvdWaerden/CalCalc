@@ -1,8 +1,5 @@
 # TODO
 
-## Consider
-* Add inches and lbs calculation option
-
 ## Webpack
 ### Long term caching
 * Webpack condig entry  '[name].[chunkhash].js for Long-Term Caching https://laracasts.com/series/webpack-for-everyone/episodes/11?autoplay=true
