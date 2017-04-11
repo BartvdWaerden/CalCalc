@@ -14,12 +14,6 @@ module.exports = function(env) {
 
     plugins: [
 
-      new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('develop'),
-        },
-      }),
-
       new webpack.HotModuleReplacementPlugin(),
 
     ],

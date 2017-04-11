@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -18,7 +17,7 @@ module.exports = function () {
     },
 
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, '../dist'),
       filename: '[name].js',
     },
 
@@ -35,7 +34,7 @@ module.exports = function () {
         {
           test: /\.js$/,
           loader: 'babel-loader!eslint-loader',
-          include: path.join(__dirname, 'src'),
+          include: path.join(__dirname, '../src/'),
           exclude: /(node_modules)/,
         },
         {
@@ -55,12 +54,12 @@ module.exports = function () {
           options: {
             name: 'images/[name].[hash].[ext]',
           },
-          include: path.join(__dirname, 'src/'),
+          include: path.join(__dirname, '../src/'),
         },
         {
           test: /\.json$/,
           loader: 'file-loader?name=[name].[hash].[ext]',
-          include: path.join(__dirname, 'src/'),
+          include: path.join(__dirname, '../src/'),
           exclude: /(node_modules)/,
         },
       ],
