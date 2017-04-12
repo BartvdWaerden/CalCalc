@@ -4,16 +4,16 @@
 
 @import 'settings';
 
-// $global-flexbox: true;
+$global-flexbox: true;
 // @include foundation-everything($flex: true);
 
 // Foundation Components
-// @include foundation-global-styles;
+@include foundation-global-styles;
 // @include foundation-grid;
-// // @include foundation-flex-grid;
+@include foundation-flex-grid;
 // @include foundation-typography;
 @include foundation-button;
-// @include foundation-forms;
+@include foundation-forms;
 // // @include foundation-range-input;
 // @include foundation-accordion;
 // @include foundation-accordion-menu;
@@ -41,7 +41,7 @@
 // @include foundation-sticky;
 // @include foundation-reveal;
 // @include foundation-switch;
-// @include foundation-table;
+@include foundation-table;
 // @include foundation-tabs;
 // @include foundation-thumbnail;
 // @include foundation-title-bar;
@@ -49,17 +49,17 @@
 // @include foundation-top-bar;
 // @include foundation-visibility-classes;
 // @include foundation-float-classes;
-// // @include foundation-flex-classes;
+@include foundation-flex-classes;
 
-.test {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    margin: 10px 20px 10px 20px;
-    font-size: 1.50rem;
-    background-position: bottom right;
-    -webkit-border-radius: 16px;
-    color: #ff0000;
-    border-radius: 16px;
-    background-color: red;
-}
+// .test {
+//     display: flex;
+//     width: 100px;
+//     height: 100px;
+//     margin: 10px 20px 10px 20px;
+//     font-size: 1.50rem;
+//     background-position: bottom right;
+//     -webkit-border-radius: 16px;
+//     color: #ff0000;
+//     border-radius: 16px;
+//     background-color: red;
+// }
