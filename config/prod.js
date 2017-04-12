@@ -22,6 +22,7 @@ module.exports = function(env) {
             fallback: 'style-loader',
             use: [
               'css-loader',
+              'postcss-loader',
               'sass-loader',
             ],
           }),
