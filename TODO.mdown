@@ -1,5 +1,4 @@
 # TODO
 
 ## Webpack
-* Remove unused css with https://github.com/webpack-contrib/purifycss-webpack
 * Add autoprefixer + postcss
