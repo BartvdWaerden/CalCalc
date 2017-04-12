@@ -33,7 +33,7 @@ module.exports = function(env) {
     plugins: [
 
       new CleanWebpackPlugin(['dist'], {
-        root: __dirname,
+        root: path.join(__dirname, '../'),
         verbose: true,
         dry: false,
       }),
