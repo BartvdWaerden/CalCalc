@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function () {
   return {
@@ -39,13 +38,13 @@ module.exports = function () {
         },
         {
           test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [
-              'css-loader',
-              'sass-loader',
-            ],
-          }),
+          use: [{
+            loader: 'style-loader', // creates style nodes from JS strings.
+          }, {
+            loader: 'css-loader', // translates CSS into CommonJS.
+          }, {
+            loader: 'sass-loader', // compiles Sass to CSS.
+          }],
           include: path.join(__dirname, '../src/'),
         },
         {
@@ -66,11 +65,6 @@ module.exports = function () {
     },
 
     plugins: [
-
-      new ExtractTextPlugin({
-        filename: '[name].[hash].css',
-        allChunks: true,
-      }),
 
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '..', 'src', 'index.html'),

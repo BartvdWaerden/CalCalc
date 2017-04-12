@@ -5,14 +5,14 @@
 @import 'settings';
 
 // $global-flexbox: true;
-@include foundation-everything($flex: true);
+// @include foundation-everything($flex: true);
 
 // Foundation Components
 // @include foundation-global-styles;
 // @include foundation-grid;
 // // @include foundation-flex-grid;
 // @include foundation-typography;
-// @include foundation-button;
+@include foundation-button;
 // @include foundation-forms;
 // // @include foundation-range-input;
 // @include foundation-accordion;
