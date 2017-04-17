@@ -1,0 +1,24 @@
+sudo: false
+language: node_js
+node_js:
+- 7.4.0
+cache:
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
+notifications:
+  email: false
+before_script:
+- npm prune
+script:
+- npm run build
+after_success:
+- bash ./scripts/deploy.sh
+env:
+  global:
+  - GH_USER: https://github.com/BartvdWaerden
+  - GH_REPO: https://github.com/BartvdWaerden/js-practise
+  matrix:
+    secure: tm40skS6RG4+4gY4STsZk3waJHHgda6IBZ1KF3E9zQyxSqIZnSBu3mF3T9rtvL63kxkZ5RQrdvaFIM1AOy5083IjcvlIor1ygGhz4Eg02N26h8MQaoK2iqZ2lkdLw+NVjV66mnCPftemYh/2mw746foYGTZY1k/TaB58aWh8UfN6CHJV1p0mIonrAFceP+Lve2mkBLeX/XK71cV6EOnKz1cZZv/PHg9G83ok8vQ8JNMlFfqUGnRpz2n+i1ZsgU2hKxeoCBDFFF4U/PIU0TJ41icmMrTM/BpK6KA9ssxr9woWs2lmLkRz6hoHeCF6JQsfXuVCFkdfnZh/tqHl7+VI2JGaIOv1I6g+ppDGzL4SsCRz+w1kcTmikf9IgKhVjbgsL66UsPT9wRF8SWhuXKiOYKHtMj9MfPPUYC6wUj8CTjVNb+aBGBEt8PT4o8QMs8V60zGVA53qg8EVNgVnyfEENF7dqVN34OP+7MOlIf4GI3vrCV/lSVlIl28ITywVUx6TAu8MhU2JgXSmW/7OJRVEI37JBUmYw4CksMR2Pbp+mDy8BRW9wjHaUti+wlgrjXySKGqQLCj67R3zqtu/4z9yAK8IrPV2OT50WROgpPxsjzm+rUy+iWNTth6NTEMYR1zyZmfCbPZBZnizsNCwB2DIXIPUTHMfcudgtFyGk/dwu14=
