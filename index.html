@@ -1,1 +1,126 @@
-Placeholder page
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calories Calculator</title>
+<link href="app.52ca7065fb62474d45e5.css?25576e063c7db5ddb577" rel="stylesheet"></head>
+
+<body>
+
+    <div class="row column">
+
+        <h1>Calories Calculator</h1>
+
+        <form class="c-form" name="calories">
+
+            <div class="row">
+                <div class="small-12 medium-4 medium-4 column">
+                    <legend>Formula:</legend>
+                    <fieldset class="fieldset">
+                        <input type="radio" name="formula" value="harris" checked>Harris &amp; Benedict
+                        <input type="radio" name="formula" value="spijker">Spijker-Hoven
+                    </fieldset>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <legend>Use kilograms (default) or pounds:</legend>
+                    <fieldset class="fieldset">
+                        <input type="radio" name="mass" value="kilograms" checked>Kilograms
+                        <input type="radio" name="mass" value="pounds">Pounds
+                    </fieldset>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <legend>Use centimeters (default) or inches:</legend>
+                    <fieldset class="fieldset">
+                        <input type="radio" name="height" value="centimeters" checked>Centimeters
+                        <input type="radio" name="height" value="inches">Inches
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 compact-4 column">
+                    <legend>Gender:</legend>
+                    <fieldset class="fieldset">
+                        <input type="radio" name="gender" value="male" checked>Male
+                        <input type="radio" name="gender" value="female">Female
+                    </fieldset>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <fieldset class="fieldset">
+                        <legend>Type of training:</legend>
+                        <input type="radio" name="training" value="fat">Fat
+                        <input type="radio" name="training" value="muscle" checked>Muscle
+                    </fieldset>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <fieldset class="fieldset">
+                        <legend>PAL:</legend>
+                        <input type="radio" name="pal" value="1.2">1.2
+                        <input type="radio" name="pal" value="1.3">1.3
+                        <input type="radio" name="pal" value="1.4">1.4
+                        <input type="radio" name="pal" value="1.5" checked>1.5
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 medium-4 column">
+                    <label>Weight:
+                        <input class="c-input" type="number" name="weight" placeholder="weight" step="0.1" value="10" />
+                    </label>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <label>Length:
+                        <input class="c-input" type="number" name="length" placeholder="length" step="0.1" value="100" />
+                    </label>
+                </div>
+
+                <div class="small-12 medium-4 column">
+                    <label>Age:
+                        <input class="c-input" type="number" name="age" placeholder="age" step="1" value="26" />
+                    </label>
+                </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th width="200">Training Day</th>
+                  <th width="200">Rest Day</th>
+                  <th width="150">Carbs</th>
+                  <th width="150">Protein</th>
+                  <th width="150">Fat</th>
+                  <th width="150">Fiber</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="training"></td>
+                  <td class="rest"></td>
+                  <td class="carbs"></td>
+                  <td class="protein"></td>
+                  <td class="fat"></td>
+                  <td class="fiber"></td>
+                </tr>
+              </tbody>
+            </table>
+
+        </form>
+
+    </div>
+
+<!-- <div>
+  <button class="button" id="request">Get exercises</button>
+  <div id="container"></div>
+</div> -->
+
+<script type="text/javascript" src="common.56878ff7768b3bff500d.js?25576e063c7db5ddb577"></script><script type="text/javascript" src="app.52ca7065fb62474d45e5.js?25576e063c7db5ddb577"></script></body>
+
+</html>
