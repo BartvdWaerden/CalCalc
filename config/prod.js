@@ -6,6 +6,7 @@ const commonConfig = require('./base.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = function(env) {
   return webpackMerge(commonConfig(), {
@@ -60,6 +61,8 @@ module.exports = function(env) {
         // Give paths to parse for rules. These should be absolute.
         paths: glob.sync(path.join(__dirname, '../src/*.html')),
       }),
+
+      new StyleLintPlugin(),
 
     ],
   });
