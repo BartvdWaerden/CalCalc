@@ -1,5 +1,11 @@
 {
   "extends": [
     "stylelint-rokit"
-  ]
+  ],
+  "rules": {
+    at-rule-empty-line-before: null,
+    "color-no-hex": null,
+    "indentation": 2,
+    "number-leading-zero": null
+  }
 }

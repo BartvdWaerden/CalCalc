@@ -62,17 +62,17 @@ $global-flexbox: true;
  */
 
 .wf-loading {
-    opacity: 0;
-    visibility: hidden; /* IE7/8 */
+  opacity: 0;
+  visibility: hidden; /* IE7/8 */
 }
 
 .wf-active {
-    transition: opacity .24s ease-in-out;
-    opacity: 1;
-    visibility: visible; /* IE7/8 */
+  transition: opacity .24s ease-in-out;
+  opacity: 1;
+  visibility: visible; /* IE7/8 */
 }
 
 .wf-inactive {
-    opacity: 1;
-    visibility: visible; /* IE7/8 */
+  opacity: 1;
+  visibility: visible; /* IE7/8 */
 }
