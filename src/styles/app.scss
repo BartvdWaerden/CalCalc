@@ -51,15 +51,28 @@ $global-flexbox: true;
 // @include foundation-float-classes;
 @include foundation-flex-classes;
 
-.test {
-        width: 100px;
-    display: flex;
-    height: 100px;
-    margin: 10px 20px 10px 20px;
-    font-size: 1.50rem;
-    background-position: bottom right;
-    -webkit-border-radius: 16px;
-    color: #ff0000;
-    border-radius: 16px;
-    background-color: red;
+
+/*----------------------------------------------------------------------------*\
+    #VENDORS WEBFONT LOADING
+\*----------------------------------------------------------------------------*/
+
+/**
+ * Font events for web fonts loaded with Typekit and/or Google's
+ * WebFont Loader to control the Flash of Unstyled Text (FOUT).
+ */
+
+.wf-loading {
+    opacity: 0;
+    visibility: hidden; /* IE7/8 */
+}
+
+.wf-active {
+    transition: opacity .24s ease-in-out;
+    opacity: 1;
+    visibility: visible; /* IE7/8 */
+}
+
+.wf-inactive {
+    opacity: 1;
+    visibility: visible; /* IE7/8 */
 }
