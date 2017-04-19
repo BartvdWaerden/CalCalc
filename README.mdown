@@ -1,4 +1,5 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![Build Status](https://travis-ci.org/BartvdWaerden/CalCalc.svg?branch=master)](https://travis-ci.org/BartvdWaerden/CalCalc)
 
 # Calorie calculator
 > A calorie calculator based on the Harris & Benedict and/or Spijker-Hoven formula
